@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UnityGameFramework>
+  <ResourceBuilder>
+    <Settings>
+      <InternalResourceVersion>4</InternalResourceVersion>
+      <Platforms>34</Platforms>
+      <AssetBundleCompression>1</AssetBundleCompression>
+      <CompressionHelperTypeName>UnityGameFramework.Runtime.DefaultCompressionHelper</CompressionHelperTypeName>
+      <AdditionalCompressionSelected>True</AdditionalCompressionSelected>
+      <ForceRebuildAssetBundleSelected>False</ForceRebuildAssetBundleSelected>
+      <BuildEventHandlerTypeName>PlayPlay.Editor.PlayPlayBuildEventHandler</BuildEventHandlerTypeName>
+      <OutputDirectory>F:/Demo/PlayPlay/BuildOut</OutputDirectory>
+      <OutputPackageSelected>True</OutputPackageSelected>
+      <OutputFullSelected>True</OutputFullSelected>
+      <OutputPackedSelected>True</OutputPackedSelected>
+    </Settings>
+  </ResourceBuilder>
+</UnityGameFramework>
