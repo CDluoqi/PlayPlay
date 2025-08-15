@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UnityGameFramework>
+  <ResourceCollection>
+    <Resources>
+      <Resource Name="Configs" LoadType="0" Packed="True" />
+      <Resource Name="DataTables" LoadType="0" Packed="True" />
+      <Resource Name="Scenes" LoadType="0" Packed="True" />
+      <Resource Name="UI/UIForms" LoadType="0" Packed="True" />
+    </Resources>
+    <Assets>
+      <Asset Guid="024f531fc883abd43b8ca2509d5f3331" ResourceName="DataTables" />
+      <Asset Guid="10de07bfd6b2e4440b0674988929de66" ResourceName="Configs" />
+      <Asset Guid="754a7694bd734ef4db6d82aa92e702de" ResourceName="DataTables" />
+      <Asset Guid="7ce86f25863d17f49825ebc0b632d3ea" ResourceName="Scenes" />
+      <Asset Guid="8700f6fdc2e619042be189baafe56ba8" ResourceName="DataTables" />
+      <Asset Guid="882a5ff0c24637a49a9fc69851aa53cd" ResourceName="UI/UIForms" />
+      <Asset Guid="a46406b860c10c54bb931ae5781b1d97" ResourceName="DataTables" />
+    </Assets>
+  </ResourceCollection>
+</UnityGameFramework>
