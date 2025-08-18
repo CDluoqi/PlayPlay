@@ -42,58 +42,99 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.QuaternionProcessor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPInverter.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\DebuggerWindow.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.GenericDataProcessor.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\PlayPlayBuildEventHandler.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.Int16Processor.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableGeneratorMenu.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPTimeMax.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.Int64Processor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\NPBehaveGraphEditorView.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.SByteProcessor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPCooldown.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\Composite\RandomSequenceTest.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\_utils\Test.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.DateTimeProcessor.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\Decorator\BlackboardQueryTest.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableCodeGenerator.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.CharProcessor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\AbstractBehaveNode.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.UInt16Processor.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\Composite\SelectorTest.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\Composite\ParallelTest.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\INPBehaveNodeView.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.DataProcessorUtility.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPObserver.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPSucceeder.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\GraphData.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPService.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPWaitUntilStopped.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\BlackboardTest.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPWait.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\_utils\TestRoot.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.DataProcessor.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.DecimalProcessor.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\GameFrameworkConfigs.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPRandomSelector.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPAction.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPTimeMin.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableGenerator.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPFailer.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\GeneralTest.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\NPBehaveGraphData.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.UInt64Processor.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\Decorator\CooldownTest.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.Vector2Processor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPNavWalkTo.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPCondition.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPBlackboardQuery.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\DebuggerEditor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\NPBehaveSearchWindowProvider.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\Composite\SequenceTest.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.Color32Processor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\NPBehaveSearchWindowAdapter.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.DoubleProcessor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPSelector.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.StringProcessor.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\_utils\MockNode.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\ClockTest.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPBlackboardCondition.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.RectProcessor.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.BooleanProcessor.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.Vector4Processor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\GraphObject.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPRandomSequence.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.IdProcessor.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\Decorator\RepeaterTest.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.Vector3Processor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPWaitForCondition.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\Composite\RandomSelectorTest.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\NPBehaveGraphView.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.UInt32Processor.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.SingleProcessor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPRoot.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.ByteProcessor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\NPBehaveNodeView.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.CommentProcessor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPSequence.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.Int32Processor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPParallel.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPRepeater.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\NPBehaveGraphWindow.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.ColorProcessor.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Node\NPRandom.cs" />
+     <Folder Include="Assets\Test\NPBehave Graph\Editor\Node" />
+     <Folder Include="Assets\Test\NPBehave Graph\Editor\Resources\Styles" />
+     <None Include="Assets\Test\NPBehave Graph\Editor\Resources\Styles\NPBehaveGraphView.uss" />
      <Folder Include="Assets\GameMain\Scripts\Editor\DataTableGenerator" />
      <Folder Include="Assets\Test\NPBehave\Editor\Tests\Composite" />
+     <Folder Include="Assets\Test\NPBehave Graph\Editor\Resources" />
+     <Folder Include="Assets\Test\NPBehave Graph\Editor" />
      <Folder Include="Assets\Test\NPBehave\Editor\Tests\_utils" />
+     <None Include="Assets\Test\NPBehave Graph\Editor\Resources\Styles\NPBehaveGraphEditorView.uss" />
      <Folder Include="Assets\TutorialInfo\Scripts\Editor" />
      <Folder Include="Assets\GameMain\Scripts\Editor" />
      <Folder Include="Assets\Test\NPBehave\Editor" />
@@ -364,52 +405,52 @@
      <HintPath>D:\Program Files\Unity\2021.3.16f1c1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.IonicZip">
-     <HintPath>F:\Demo\PlayPlay\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil.Pdb">
-     <HintPath>F:\Demo\PlayPlay\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
      </Reference>
      <Reference Include="log4netPlastic">
-     <HintPath>F:\Demo\PlayPlay\Library\PackageCache\com.unity.collab-proxy@1.17.7\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\PackageCache\com.unity.collab-proxy@1.17.7\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
      </Reference>
      <Reference Include="Newtonsoft.Json">
-     <HintPath>F:\Demo\PlayPlay\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Plastic.Newtonsoft.Json">
-     <HintPath>F:\Demo\PlayPlay\Library\PackageCache\com.unity.collab-proxy@1.17.7\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\PackageCache\com.unity.collab-proxy@1.17.7\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
      </Reference>
      <Reference Include="GameFramework">
-     <HintPath>F:\Demo\PlayPlay\Assets\UnityGameFramework\Libraries\GameFramework.dll</HintPath>
+     <HintPath>F:\PlayPlay\Assets\UnityGameFramework\Libraries\GameFramework.dll</HintPath>
      </Reference>
      <Reference Include="ICSharpCode.SharpZipLib">
-     <HintPath>F:\Demo\PlayPlay\Assets\UnityGameFramework\Libraries\ICSharpCode.SharpZipLib.dll</HintPath>
+     <HintPath>F:\PlayPlay\Assets\UnityGameFramework\Libraries\ICSharpCode.SharpZipLib.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Plastic.Antlr3.Runtime">
-     <HintPath>F:\Demo\PlayPlay\Library\PackageCache\com.unity.collab-proxy@1.17.7\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\PackageCache\com.unity.collab-proxy@1.17.7\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.YamlDotNet">
-     <HintPath>F:\Demo\PlayPlay\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil.Mdb">
-     <HintPath>F:\Demo\PlayPlay\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.TextureAssets">
-     <HintPath>F:\Demo\PlayPlay\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
      </Reference>
      <Reference Include="unityplastic">
-     <HintPath>F:\Demo\PlayPlay\Library\PackageCache\com.unity.collab-proxy@1.17.7\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\PackageCache\com.unity.collab-proxy@1.17.7\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil">
-     <HintPath>F:\Demo\PlayPlay\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil.Rocks">
-     <HintPath>F:\Demo\PlayPlay\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-     <HintPath>F:\Demo\PlayPlay\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
      </Reference>
      <Reference Include="nunit.framework">
-     <HintPath>F:\Demo\PlayPlay\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Android.Types">
      <HintPath>D:\Program Files\Unity\2021.3.16f1c1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
@@ -793,172 +834,172 @@
      <HintPath>D:\Program Files\Unity\2021.3.16f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.TestRunner">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.TestRunner">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
      </Reference>
      <Reference Include="Purchasing.Common">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Purchasing.Common.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Purchasing.Common.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VSCode.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.Purchasing">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TextMeshPro.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.State.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.Purchasing.SecurityStub">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.Advertisements">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Searcher.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.UI">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Rider.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.SpatialTracking">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.UI">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
      </Reference>
      <Reference Include="Unity.ShaderGraph.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.Purchasing.Codeless">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Mathematics.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.Monetization">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEngine.Monetization.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEngine.Monetization.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.Flow.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.2D.Tilemap.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
      </Reference>
      <Reference Include="PPv2URPConverters">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualStudio.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Services.Analytics.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.Services.Analytics.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.Services.Analytics.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Timeline">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.Core.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TextMeshPro">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Services.Analytics">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.Services.Analytics.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.Services.Analytics.dll</HintPath>
      </Reference>
      <Reference Include="Unity.2D.Sprite.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.Core.Runtime">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.Flow">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
      </Reference>
      <Reference Include="Unity.PlasticSCM.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Services.Core">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.Core">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Mathematics">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Services.Core.Analytics">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.Purchasing.SecurityCore">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.Universal.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.Shared.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Services.Core.Environments">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Timeline.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.Purchasing.Stores">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEngine.Purchasing.Stores.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEngine.Purchasing.Stores.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.Purchasing">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEditor.Purchasing.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEditor.Purchasing.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.SpatialTracking">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.Advertisements.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\UnityEngine.Advertisements.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\UnityEngine.Advertisements.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.Core.Editor">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.State">
-     <HintPath>F:\Demo\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+     <HintPath>F:\PlayPlay\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>
