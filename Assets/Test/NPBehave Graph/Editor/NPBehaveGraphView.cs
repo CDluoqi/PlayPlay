@@ -10,35 +10,35 @@ namespace UnityEditor.NPBehaveGraph
 {
     public class NPBehaveGraphView : GraphView
     {
+        List<NPBehaveStackNodeView> stackNodeViews { get; set; }
+        
         public NPBehaveGraphView()
         {
+            stackNodeViews = new List<NPBehaveStackNodeView>();
             styleSheets.Add(Resources.Load<StyleSheet>("Styles/NPBehaveGraphView"));
         }
 
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
-        {
-            Debug.LogError("BuildContextualMenu");
+        {;
             base.BuildContextualMenu(evt);
-        }
-
-        public NPRoot CreateNPRoot(string nodeName)
-        {
-            var root = new NPRoot(this, nodeName);
-            AddElement(root);
-            return root;
-        }
-
-        public NPSequence CreateNPSequence(string nodeName)
-        {
-            var sequence = new NPSequence(this, nodeName);
-            AddElement(sequence);
-            return sequence;
         }
 
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
         {
             return ports.ToList().Where(endPort => endPort.direction != startPort.direction && endPort.node != startPort.node).ToList();
         }
+
+        internal void AddStackNodeView(NPBehaveStackNodeView nodeView)
+        {
+            stackNodeViews.Add(nodeView);
+            AddElement(nodeView);
+        }
+        
+        internal NPBehaveStackNodeView GetStackNodeView(StackData stackData)
+        {
+            return stackNodeViews.FirstOrDefault(s => s.stackData == stackData);
+        }
+        
     }
 }
 

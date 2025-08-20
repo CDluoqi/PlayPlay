@@ -114,6 +114,7 @@ namespace UnityEditor.NPBehaveGraph
             }
             catch (Exception e)
             {
+                Debug.LogError("Exception:" + e.ToString());
                 m_HasError = true;
                 m_GraphEditorView = null;
                 graphObject = null;

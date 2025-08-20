@@ -1,0 +1,128 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Serialization;
+using UnityEngine;
+
+namespace UnityEditor.NPBehaveGraph
+{
+    abstract class AbstractBehaveNode : JsonObject
+    {
+        [SerializeField]
+        private string m_Name;
+        
+        [SerializeField]
+        List<NPBehaveSlot> m_Slots = new List<NPBehaveSlot>();
+        
+        public string name
+        {
+            get { return m_Name; }
+            set { m_Name = value; }
+        }
+
+        public string[] synonyms;
+
+        protected AbstractBehaveNode()
+        {
+            
+        }
+        
+        public virtual void UpdateNodeAfterDeserialization()
+        { }
+        
+        public NPBehaveSlot AddSlot(NPBehaveSlot slot)
+        {
+            if (slot == null)
+            {
+                throw new ArgumentException($"Trying to add null slot to node {this}");
+            }
+            NPBehaveSlot foundSlot = FindSlot<NPBehaveSlot>(slot.id);
+
+            if (slot == foundSlot)
+                return foundSlot;
+            
+            int firstIndex = m_Slots.FindIndex(s => s.id == slot.id);
+            if (firstIndex >= 0)
+            {
+                m_Slots[firstIndex] = slot; }
+            else
+                m_Slots.Add(slot);
+
+            return slot;
+        }
+        
+        public void GetInputSlots<T>(List<T> foundSlots) where T : NPBehaveSlot
+        {
+            foreach (var slot in m_Slots)
+            {
+                if (slot.isInputSlot && slot is T)
+                    foundSlots.Add((T)slot);
+            }
+        }
+
+        public virtual void GetInputSlots<T>(NPBehaveSlot startingSlot, List<T> foundSlots) where T : NPBehaveSlot
+        {
+            GetInputSlots(foundSlots);
+        }
+
+        public void GetOutputSlots<T>(List<T> foundSlots) where T : NPBehaveSlot
+        {
+            foreach (var slot in m_Slots)
+            {
+                if (slot.isOutputSlot && slot is T materialSlot)
+                {
+                    foundSlots.Add(materialSlot);
+                }
+            }
+        }
+
+        public virtual void GetOutputSlots<T>(NPBehaveSlot startingSlot, List<T> foundSlots) where T : NPBehaveSlot
+        {
+            GetOutputSlots(foundSlots);
+        }
+
+        public void GetSlots<T>(List<T> foundSlots) where T : NPBehaveSlot
+        {
+            foreach (var slot in m_Slots)
+            {
+                if (slot is T materialSlot)
+                {
+                    foundSlots.Add(materialSlot);
+                }
+            }
+        }
+        
+        public T FindSlot<T>(int slotId) where T : NPBehaveSlot
+        {
+            foreach (var slot in m_Slots)
+            {
+                if (slot.id == slotId && slot is T)
+                    return (T)slot;
+            }
+            return default(T);
+        }
+
+        public T FindInputSlot<T>(int slotId) where T : NPBehaveSlot
+        {
+            foreach (var slot in m_Slots)
+            {
+                if (slot.isInputSlot && slot.id == slotId && slot is T)
+                    return (T)slot;
+            }
+            return default(T);
+        }
+
+        public T FindOutputSlot<T>(int slotId) where T : NPBehaveSlot
+        {
+            foreach (var slot in m_Slots)
+            {
+                if (slot.isOutputSlot && slot.id == slotId && slot is T)
+                    return (T)slot;
+            }
+            return default(T);
+        }
+        
+    }
+}
+
+

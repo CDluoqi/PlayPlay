@@ -21,7 +21,7 @@ namespace UnityEditor.NPBehaveGraph
         }
         
         public NPBehaveGraphEditorView(EditorWindow editorWindow, GraphData graph) 
-        { 
+        {
             m_EditorWindow = editorWindow;
             m_Graph = graph;
 
@@ -75,14 +75,14 @@ namespace UnityEditor.NPBehaveGraph
         
         void NodeCreationRequest(NodeCreationContext c) 
         { 
-            if (EditorWindow.focusedWindow == m_EditorWindow) //only display the search window when current graph view is focused
-            { 
+            if (EditorWindow.focusedWindow == m_EditorWindow)
+            {
                 m_SearchWindowProvider.target = c.target; 
                 var displayPosition = (c.screenMousePosition - m_EditorWindow.position.position);
-                
+                NPBehaveStackNodeView stackNodeView = c.target as NPBehaveStackNodeView;
                 SearcherWindow.Show(m_EditorWindow, (m_SearchWindowProvider as NPBehaveSearchProvider).LoadSearchWindow(),
-                item => (m_SearchWindowProvider as NPBehaveSearchProvider).OnSearcherSelectEntry(item, c.screenMousePosition - m_EditorWindow.position.position),
-                displayPosition, null, new SearcherWindow.Alignment(SearcherWindow.Alignment.Vertical.Center, SearcherWindow.Alignment.Horizontal.Left)); 
+                    item => (m_SearchWindowProvider as NPBehaveSearchProvider).OnSearcherSelectEntry(item, c.screenMousePosition - m_EditorWindow.position.position, stackNodeView),
+                    displayPosition, null, new SearcherWindow.Alignment(SearcherWindow.Alignment.Vertical.Center, SearcherWindow.Alignment.Horizontal.Left)); 
             } 
         }
 
@@ -96,10 +96,31 @@ namespace UnityEditor.NPBehaveGraph
 
         void AddNode(AbstractBehaveNode node)
         {
-            var materialNodeView = new NPBehaveNodeView() { userData = node };
-            m_GraphView.AddElement(materialNodeView);
-            materialNodeView.Initialize(node);
-            materialNodeView.MarkDirtyRepaint();
+            Node nodeView;
+            
+            if (node is NPBehaveStackNode stackNode)
+            {
+                var stackNodeView = new NPBehaveStackNodeView(node, m_EditorWindow) { userData = node };
+                m_GraphView.AddStackNodeView(stackNodeView);
+                nodeView = stackNodeView;
+            }
+            else if (node is NPBehaveBlockNode blockNode)
+            {
+                var blockNodeView = new NPBehaveNodeView { userData = blockNode };
+                blockNodeView.Initialize(blockNode);
+                nodeView = blockNodeView;
+
+                NPBehaveStackNodeView stackNodeView = m_GraphView.GetStackNodeView(blockNode.stackData);
+                stackNodeView.InsertBlock(blockNodeView);
+            }
+            else
+            {
+                var behaveNodeView = new NPBehaveNodeView() { userData = node };
+                m_GraphView.AddElement(behaveNodeView);
+                behaveNodeView.Initialize(node);
+                nodeView = behaveNodeView;
+            }
+            nodeView.MarkDirtyRepaint();
         }
 
         public void Dispose() 
