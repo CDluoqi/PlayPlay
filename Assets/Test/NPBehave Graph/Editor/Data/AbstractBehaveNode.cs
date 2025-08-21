@@ -1,15 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Serialization;
+using UnityEditor.BehaveGraph.Serialization;
 using UnityEngine;
 
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     abstract class AbstractBehaveNode : JsonObject
     {
         [SerializeField]
         private string m_Name;
+        
+        [SerializeField]
+        private DrawState m_DrawState;
         
         [SerializeField]
         List<NPBehaveSlot> m_Slots = new List<NPBehaveSlot>();
@@ -21,6 +24,15 @@ namespace UnityEditor.NPBehaveGraph
         }
 
         public string[] synonyms;
+        
+        public DrawState drawState
+        {
+            get { return m_DrawState; }
+            set
+            {
+                m_DrawState = value;
+            }
+        }
 
         protected AbstractBehaveNode()
         {
@@ -120,6 +132,14 @@ namespace UnityEditor.NPBehaveGraph
                     return (T)slot;
             }
             return default(T);
+        }
+        
+        protected void EnqueSlotsForSerialization()
+        {
+            foreach (var slot in m_Slots)
+            {
+                slot.OnBeforeSerialize();
+            }
         }
         
     }

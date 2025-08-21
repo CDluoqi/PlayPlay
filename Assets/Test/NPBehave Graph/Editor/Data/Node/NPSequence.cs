@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     [Title("Composite", "Sequence")]
     class NPSequence : NPComposite

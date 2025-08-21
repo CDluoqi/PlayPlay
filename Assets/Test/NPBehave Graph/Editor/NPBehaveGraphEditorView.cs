@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.Searcher;
@@ -6,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Object = UnityEngine.Object;
 
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     class NPBehaveGraphEditorView : VisualElement, IDisposable 
     {
@@ -14,6 +15,7 @@ namespace UnityEditor.NPBehaveGraph
         NPBehaveGraphView m_GraphView;
         GraphData m_Graph;
         
+        public Action saveRequested { get; set; }
         SearchWindowProvider m_SearchWindowProvider;
         public NPBehaveGraphView graphView 
         { 
@@ -32,7 +34,8 @@ namespace UnityEditor.NPBehaveGraph
                 GUILayout.BeginHorizontal(EditorStyles.toolbar);
                 if(GUILayout.Button("Save Asset", EditorStyles.toolbarButton))
                 {
-                    Debug.LogError("Save");
+                    if (saveRequested != null)
+                        saveRequested();
                 }
                 GUILayout.Space(6);
                 GUILayout.FlexibleSpace();
@@ -56,11 +59,15 @@ namespace UnityEditor.NPBehaveGraph
                 content.Add(m_GraphView); 
                 
                 RegisterCallback<GeometryChangedEvent>(ApplySerializedWindowLayouts);
+                
+                m_GraphView.graphViewChanged = GraphViewChanged;
             }
             
             m_SearchWindowProvider = ScriptableObject.CreateInstance<NPBehaveSearchProvider>(); 
             m_SearchWindowProvider.Initialize(editorWindow, m_Graph, m_GraphView); 
             m_GraphView.nodeCreationRequest = NodeCreationRequest;
+            
+            AddNodes(graph.GetNodes<AbstractBehaveNode>());
             
             Add(content);
             
@@ -84,6 +91,35 @@ namespace UnityEditor.NPBehaveGraph
                     item => (m_SearchWindowProvider as NPBehaveSearchProvider).OnSearcherSelectEntry(item, c.screenMousePosition - m_EditorWindow.position.position, stackNodeView),
                     displayPosition, null, new SearcherWindow.Alignment(SearcherWindow.Alignment.Vertical.Center, SearcherWindow.Alignment.Horizontal.Left)); 
             } 
+        }
+
+        GraphViewChange GraphViewChanged(GraphViewChange graphViewChange)
+        {
+            if (graphViewChange.movedElements != null)
+            {
+                foreach (var element in graphViewChange.movedElements)
+                {
+                    if (element.userData is AbstractBehaveNode node)
+                    {
+                        var drawState = node.drawState;
+                        drawState.position = element.parent.ChangeCoordinatesTo(m_GraphView.contentViewContainer, element.GetPosition());
+                        node.drawState = drawState;
+                    }
+                }
+            }
+            return graphViewChange;
+        }
+
+        void AddNodes(IEnumerable<AbstractBehaveNode> nodes)
+        {
+            foreach (var node in nodes)
+            {
+                // Skip BlockNodes as we need to order them
+                if (node is NPBehaveBlockNode)
+                    continue;
+
+                AddNode(node);
+            }
         }
 
         public void HandleGraphChanges(bool wasUndoRedoPerformed)
@@ -127,6 +163,8 @@ namespace UnityEditor.NPBehaveGraph
         { 
             if (m_GraphView != null) 
             { 
+                saveRequested = null;
+                
                 foreach (var node in m_GraphView.Children().OfType<INPBehaveNodeView>()) 
                     node.Dispose(); 
                 m_GraphView.nodeCreationRequest = null; 

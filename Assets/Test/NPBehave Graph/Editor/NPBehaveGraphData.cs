@@ -5,7 +5,7 @@ using UnityEditor.ShaderGraph.Serialization;
 using UnityEngine;
 using UnityEditor.Graphing;
 
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     
 }

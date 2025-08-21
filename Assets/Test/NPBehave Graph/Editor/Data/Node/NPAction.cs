@@ -1,4 +1,4 @@
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     [Title("Task", "Action")]
     class NPAction : NPTask

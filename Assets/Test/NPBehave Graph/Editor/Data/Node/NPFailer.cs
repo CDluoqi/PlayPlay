@@ -1,4 +1,4 @@
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     [Title("Decorator", "NPFailer")]
     class NPFailer : AbstractBehaveNode

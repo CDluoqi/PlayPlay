@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.BehaveGraph.Serialization;
 using UnityEditor.Graphs;
 using UnityEngine;
 
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     [Serializable]
-    abstract class NPBehaveSlot
+    abstract class NPBehaveSlot : JsonObject
     {
         internal static Color slotColor = new Color(0.9647059f, 1.0f, 0.6039216f);
         
@@ -74,6 +75,15 @@ namespace UnityEditor.NPBehaveGraph
         {
             get { return m_DisplayName;}
             set { m_DisplayName = value; }
+        }
+        
+        public abstract bool isDefaultValue { get; }
+        
+        public abstract void CopyValuesFrom(NPBehaveSlot foundSlot);
+        
+        public bool Equals(NPBehaveSlot other)
+        {
+            return m_Id == other.m_Id;
         }
     }
 }

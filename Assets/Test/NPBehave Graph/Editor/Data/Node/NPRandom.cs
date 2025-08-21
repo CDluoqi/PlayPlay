@@ -1,4 +1,4 @@
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     [Title("Decorator", "NPRandom")]
     class NPRandom : AbstractBehaveNode

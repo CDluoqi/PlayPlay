@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Node = UnityEditor.Experimental.GraphView.Node;
 
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     sealed class NPBehaveNodeView : Node
     {
@@ -32,6 +32,10 @@ namespace UnityEditor.NPBehaveGraph
             {
                 AddToClassList("blockData");
                 m_TitleContainer.RemoveFromHierarchy();
+            }
+            else
+            {
+                SetPosition(new Rect(inNode.drawState.position.x, inNode.drawState.position.y, 0, 0));
             }
         }
         

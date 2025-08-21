@@ -1,9 +1,13 @@
 using System;
+using System.IO;
+using System.Text;
+using UnityEditor.BehaveGraph.Serialization;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Object = UnityEngine.Object;
 
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     public class NPBehaveGraphEditorWindow : EditorWindow
     {
@@ -13,6 +17,9 @@ namespace UnityEditor.NPBehaveGraph
         string m_Selected = "AAAA";
         [NonSerialized]
         bool m_HasError;
+        
+        [SerializeField]
+        string m_LastSerializedFileContents;
         [SerializeField]
         GraphObject m_GraphObject;
         
@@ -53,6 +60,7 @@ namespace UnityEditor.NPBehaveGraph
     
                 if (m_GraphEditorView != null)
                 {
+                    m_GraphEditorView.saveRequested += () => SaveAsset();
                     m_FrameAllAfterLayout = true;
                     this.rootVisualElement.Add(m_GraphEditorView);
                 }
@@ -95,8 +103,6 @@ namespace UnityEditor.NPBehaveGraph
             if (graphEditorView == null)
                 return;
 
-            // this callback is only so we can run post-layout behaviors after the graph loads for the first time
-            // we immediately unregister it so it doesn't get called again
             graphEditorView.UnregisterCallback<GeometryChangedEvent>(OnGeometryChanged);
             if (m_FrameAllAfterLayout)
                 graphEditorView.graphView.FrameAll();
@@ -105,11 +111,29 @@ namespace UnityEditor.NPBehaveGraph
 
         public void Initialize(string assetGuid)
         {
+            var asset = AssetDatabase.LoadAssetAtPath<Object>(AssetDatabase.GUIDToAssetPath(assetGuid));
+            if (asset == null)
+                return;
+            
+            if (selectedGuid == assetGuid)
+               return;
+            
+            selectedGuid = assetGuid;
+           
+           var path = AssetDatabase.GetAssetPath(asset);
+            
             try
             {
+                
+                
+                m_LastSerializedFileContents = File.ReadAllText(path, Encoding.UTF8);
+                
                 graphObject = CreateInstance<GraphObject>();
                 graphObject.hideFlags = HideFlags.HideAndDontSave;
                 graphObject.graph = new GraphData();
+                
+                MultiJson.Deserialize(graphObject.graph, m_LastSerializedFileContents);
+                
                 Repaint();
             }
             catch (Exception e)
@@ -136,6 +160,35 @@ namespace UnityEditor.NPBehaveGraph
         {
             graphObject = null;
             graphEditorView = null;
+        }
+        
+        public bool SaveAsset()
+        {
+            bool saved = false;
+
+            if (selectedGuid != null && graphObject != null)
+            {
+                var path = AssetDatabase.GUIDToAssetPath(selectedGuid);
+                if (string.IsNullOrEmpty(path) || graphObject == null)
+                    return false;
+
+                var newFileContents = FileUtilities.WriteShaderGraphToDisk(path, graphObject.graph);
+                if (newFileContents != null)
+                {
+                    saved = true;
+                    m_LastSerializedFileContents = newFileContents;
+                    AssetDatabase.ImportAsset(path);
+                }
+
+                OnSaveGraph(path);
+                hasUnsavedChanges = false;
+            }
+            return saved;
+        }
+        
+        void OnSaveGraph(string path)
+        {
+
         }
 
     }

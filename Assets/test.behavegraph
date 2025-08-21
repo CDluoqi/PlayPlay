@@ -1,0 +1,122 @@
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.GraphData",
+    "m_ObjectId": "6930c0aff33447d7ad2e7f84250c5d69",
+    "m_Nodes": [
+        {
+            "m_Id": "ab7877ef6a574fd28b6444a15d91d455"
+        },
+        {
+            "m_Id": "856a72a5ba714f5bb8a1debce0fd7dc7"
+        },
+        {
+            "m_Id": "28217bde24ac474cbda6a0e36f7531f7"
+        },
+        {
+            "m_Id": "f5041e26e87c4155873b726c94ac0ae4"
+        },
+        {
+            "m_Id": "22326b0d3bdd4a388eb4868d4f10ee42"
+        }
+    ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPAction",
+    "m_ObjectId": "22326b0d3bdd4a388eb4868d4f10ee42",
+    "m_Name": "Action",
+    "m_DrawState": {
+        "m_Expanded": false,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 564.0,
+            "y": 145.0,
+            "width": 83.0,
+            "height": 77.0
+        }
+    },
+    "synonyms": [
+        "action"
+    ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPSequence",
+    "m_ObjectId": "28217bde24ac474cbda6a0e36f7531f7",
+    "m_Name": "Sequence",
+    "m_DrawState": {
+        "m_Expanded": false,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 314.0,
+            "y": 76.99999237060547,
+            "width": 150.00006103515626,
+            "height": 118.0000228881836
+        }
+    },
+    "synonyms": [
+        "sequence",
+        "arr"
+    ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPRoot",
+    "m_ObjectId": "856a72a5ba714f5bb8a1debce0fd7dc7",
+    "m_Name": "Root",
+    "m_DrawState": {
+        "m_Expanded": false,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 122.0,
+            "y": 77.0,
+            "width": 73.0,
+            "height": 77.0
+        }
+    },
+    "synonyms": [
+        "time max"
+    ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPAction",
+    "m_ObjectId": "ab7877ef6a574fd28b6444a15d91d455",
+    "m_Name": "Action",
+    "m_DrawState": {
+        "m_Expanded": false,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 554.0,
+            "y": 10.0,
+            "width": 83.0,
+            "height": 77.0
+        }
+    },
+    "synonyms": [
+        "action"
+    ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPBehaveBlockNode",
+    "m_ObjectId": "f5041e26e87c4155873b726c94ac0ae4",
+    "m_Name": "",
+    "m_DrawState": {
+        "m_Expanded": false,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "synonyms": []
+}
+

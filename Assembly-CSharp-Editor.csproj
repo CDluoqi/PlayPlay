@@ -43,6 +43,7 @@
   <ItemGroup>
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.QuaternionProcessor.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\NPInverter.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Serialization\MultiJson.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\DebuggerWindow.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.GenericDataProcessor.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Attributes\TitleAttribute.cs" />
@@ -84,6 +85,7 @@
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\NPTask.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\NPComposite.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\NPRandomSelector.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Importers\BehaveGraphImporterEditor.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\NPAction.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\NPBehaveSlot.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\NPTimeMin.cs" />
@@ -121,6 +123,7 @@
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\Decorator\RepeaterTest.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.Vector3Processor.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\NPWaitForCondition.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Importers\BehaveGraphImporter.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\Composite\RandomSelectorTest.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\NPBehaveStackNodeView.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\NPBehaveGraphView.cs" />
@@ -138,6 +141,19 @@
      <Compile Include="Assets\Test\NPBehave Graph\Editor\NPBehaveGraphWindow.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.ColorProcessor.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\NPRandom.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Serialization\MultiJsonInternal.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Serialization\JsonObject.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Serialization\JsonData.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Serialization\JsonRef.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Serialization\MultiJsonEntry.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Serialization\FakeJsonObject.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\FormerNameAttribute.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Util\FileUtilities.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Serialization\SerializationExtensions.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Serialization\RefValueEnumerable.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Serialization\DataValueEnumerable.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\DrawState.cs" />
+     <Folder Include="Assets\Test\NPBehave Graph\Editor\Importers" />
      <Folder Include="Assets\Test\NPBehave Graph\Editor\Data\Node" />
      <Folder Include="Assets\Test\NPBehave Graph\Editor\Resources\Styles" />
      <None Include="Assets\Test\NPBehave Graph\Editor\Resources\Styles\NPBehaveGraphView.uss" />
@@ -147,15 +163,18 @@
      <None Include="Assets\Test\NPBehave Graph\Editor\Resources\Styles\NPBehaveStackNodeView.uss" />
      <Folder Include="Assets\Test\NPBehave Graph\Editor\Data\Attributes" />
      <Folder Include="Assets\Test\NPBehave Graph\Editor" />
+     <Folder Include="Assets\Test\NPBehave Graph\Editor\Serialization" />
      <Folder Include="Assets\Test\NPBehave\Editor\Tests\_utils" />
      <None Include="Assets\Test\NPBehave Graph\Editor\Resources\Styles\NPBehaveBlockNodeView.uss" />
      <None Include="Assets\Test\NPBehave Graph\Editor\Resources\Styles\NPBehaveGraphEditorView.uss" />
      <Folder Include="Assets\TutorialInfo\Scripts\Editor" />
      <Folder Include="Assets\GameMain\Scripts\Editor" />
      <Folder Include="Assets\Test\NPBehave\Editor" />
+     <Folder Include="Assets\Test\NPBehave Graph\Editor\Resources\Icons" />
      <Folder Include="Assets\Test\NPBehave\Editor\Tests" />
      <Folder Include="Assets\Test\NPBehave Graph\Editor\Data" />
      <Folder Include="Assets\Test\NPBehave\Editor\Tests\Decorator" />
+     <Folder Include="Assets\Test\NPBehave Graph\Editor\Util" />
      <Reference Include="UnityEngine">
      <HintPath>D:\Program Files\Unity\2021.3.16f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>

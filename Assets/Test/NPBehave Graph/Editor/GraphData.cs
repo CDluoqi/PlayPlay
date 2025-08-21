@@ -1,11 +1,21 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.BehaveGraph.Serialization;
 using UnityEngine;
+using System.Linq;
 
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
-    sealed class GraphData
+    sealed class GraphData : JsonObject
     {
+        [SerializeField]
+        List<JsonData<AbstractBehaveNode>> m_Nodes = new List<JsonData<AbstractBehaveNode>>();
+        
+        public IEnumerable<T> GetNodes<T>()
+        {
+            return m_Nodes.SelectValue().OfType<T>();
+        }
+        
         [NonSerialized]
         List<AbstractBehaveNode> m_AddedNodes = new List<AbstractBehaveNode>();
 
@@ -32,6 +42,7 @@ namespace UnityEditor.NPBehaveGraph
 
         public void AddNode(AbstractBehaveNode node)
         {
+            m_Nodes.Add(node);
             m_AddedNodes.Add(node);
         }
         

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Graphs;
 using UnityEngine;
 
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     class NPBehaveInputSlot : NPBehaveSlot
     {
@@ -13,6 +13,12 @@ namespace UnityEditor.NPBehaveGraph
             :base(slotId, SlotType.InputSlot, hidden)
         {
             
+        }
+
+        public override bool isDefaultValue { get; }
+        public override void CopyValuesFrom(NPBehaveSlot foundSlot)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

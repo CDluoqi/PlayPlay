@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Searcher;
 using UnityEngine;
 
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     public class NPBehaveSearchWindowAdapter : SearcherAdapter
     {

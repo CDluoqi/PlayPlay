@@ -1,4 +1,4 @@
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     [Title("Composite", "RandomSequence")]
     class NPRandomSequence : NPComposite

@@ -5,7 +5,7 @@ using UnityEditor.Searcher;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     internal struct NodeEntry
     {

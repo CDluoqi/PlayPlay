@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
+using UnityEngine;
 
-namespace UnityEditor.NPBehaveGraph
+namespace UnityEditor.BehaveGraph
 {
     sealed class NPBehaveStackNodeView : StackNode
     {
@@ -37,6 +38,8 @@ namespace UnityEditor.NPBehaveGraph
 
             m_StackData = new StackData();
             m_EditorWindow = editorWindow;
+            
+            SetPosition(new Rect(inNode.drawState.position.x, inNode.drawState.position.y, 0, 0));
         }
 
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
