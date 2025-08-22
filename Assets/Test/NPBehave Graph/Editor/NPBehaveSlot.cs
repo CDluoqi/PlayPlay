@@ -45,6 +45,13 @@ namespace UnityEditor.BehaveGraph
             m_Hidden = hidden;
         }
         
+        public SlotReference slotReference
+        {
+            get { return new SlotReference(owner, m_Id); }
+        }
+        
+        public AbstractBehaveNode owner { get; set; }
+        
         public bool hidden
         {
             get { return m_Hidden; }

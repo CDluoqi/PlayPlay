@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.Rendering;
 using UnityEngine.UIElements;
 using UnityEngine;
 
 namespace UnityEditor.BehaveGraph
 {
-    sealed class NPBehaveStackNodeView : StackNode
+    sealed class NPBehaveStackNodeView : StackNode, IBehaveNodeView
     {
         StackData m_StackData;
         public StackData stackData => m_StackData;
@@ -14,7 +15,7 @@ namespace UnityEditor.BehaveGraph
 
         private VisualElement m_SlotContainer;
 
-        public NPBehaveStackNodeView(AbstractBehaveNode inNode, EditorWindow editorWindow)
+        public NPBehaveStackNodeView(NPBehaveStackNode inNode, EditorWindow editorWindow)
         {
             name = "stackNodeViewRoot";
             VisualElement titleContainer = new VisualElement {name = "titleContainer"};
@@ -36,7 +37,7 @@ namespace UnityEditor.BehaveGraph
             inNode.GetSlots(slots);
             AddSlots(slots);
 
-            m_StackData = new StackData();
+            m_StackData = inNode.stackData;
             m_EditorWindow = editorWindow;
             
             SetPosition(new Rect(inNode.drawState.position.x, inNode.drawState.position.y, 0, 0));
@@ -89,6 +90,54 @@ namespace UnityEditor.BehaveGraph
         public void InsertBlock(NPBehaveNodeView nodeView)
         {
             AddElement(nodeView);
+        }
+
+        public void Dispose()
+        {
+            
+        }
+
+        public Node gvNode { get; }
+        public AbstractBehaveNode node { get; }
+        public VisualElement colorElement { get; }
+        public void SetColor(Color newColor)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ResetColor()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UpdatePortInputTypes()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UpdateDropdownEntries()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnModified(ModificationScope scope)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void AttachMessage(string errString, ShaderCompilerMessageSeverity severity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ClearMessage()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool FindPort(SlotReference slot, out BehavePort port)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

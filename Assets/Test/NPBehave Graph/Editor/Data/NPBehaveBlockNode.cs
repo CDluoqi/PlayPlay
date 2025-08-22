@@ -27,5 +27,7 @@ namespace UnityEditor.BehaveGraph
             get => m_StackData;
             set => m_StackData = value;
         }
+        
+        public int index => stackData.blocks.IndexOf(this);
     }
 }

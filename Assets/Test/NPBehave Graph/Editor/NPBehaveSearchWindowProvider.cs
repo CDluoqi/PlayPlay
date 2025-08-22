@@ -156,7 +156,9 @@ namespace UnityEditor.BehaveGraph
                     return true;
                 if (stackNodeView != null)
                 {
-                    m_Graph.AddNode(new NPBehaveBlockNode(){stackData = stackNodeView.stackData});
+                    var blockNode = new NPBehaveBlockNode() { stackData = stackNodeView.stackData };
+                    int index = stackNodeView.GetInsertionIndex(screenMousePosition);
+                    m_Graph.AddBlock(blockNode, stackNodeView.stackData, index);
                 }
                 m_Graph.AddNode(CopyNodeForGraph(node));
             }

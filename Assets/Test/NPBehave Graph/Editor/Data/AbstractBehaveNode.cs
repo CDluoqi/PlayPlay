@@ -15,7 +15,7 @@ namespace UnityEditor.BehaveGraph
         private DrawState m_DrawState;
         
         [SerializeField]
-        List<NPBehaveSlot> m_Slots = new List<NPBehaveSlot>();
+        List<JsonData<NPBehaveSlot>> m_Slots = new List<JsonData<NPBehaveSlot>>();
         
         public string name
         {
@@ -53,12 +53,14 @@ namespace UnityEditor.BehaveGraph
             if (slot == foundSlot)
                 return foundSlot;
             
-            int firstIndex = m_Slots.FindIndex(s => s.id == slot.id);
+            int firstIndex = m_Slots.FindIndex(s => s.value.id == slot.id);
             if (firstIndex >= 0)
             {
                 m_Slots[firstIndex] = slot; }
             else
                 m_Slots.Add(slot);
+            
+            slot.owner = this;
 
             return slot;
         }
@@ -67,7 +69,7 @@ namespace UnityEditor.BehaveGraph
         {
             foreach (var slot in m_Slots)
             {
-                if (slot.isInputSlot && slot is T)
+                if (slot.value.isInputSlot && slot is T)
                     foundSlots.Add((T)slot);
             }
         }
@@ -81,7 +83,7 @@ namespace UnityEditor.BehaveGraph
         {
             foreach (var slot in m_Slots)
             {
-                if (slot.isOutputSlot && slot is T materialSlot)
+                if (slot.value.isOutputSlot && slot is T materialSlot)
                 {
                     foundSlots.Add(materialSlot);
                 }
@@ -95,7 +97,7 @@ namespace UnityEditor.BehaveGraph
 
         public void GetSlots<T>(List<T> foundSlots) where T : NPBehaveSlot
         {
-            foreach (var slot in m_Slots)
+            foreach (var slot in m_Slots.SelectValue())
             {
                 if (slot is T materialSlot)
                 {
@@ -106,7 +108,7 @@ namespace UnityEditor.BehaveGraph
         
         public T FindSlot<T>(int slotId) where T : NPBehaveSlot
         {
-            foreach (var slot in m_Slots)
+            foreach (var slot in m_Slots.SelectValue())
             {
                 if (slot.id == slotId && slot is T)
                     return (T)slot;
@@ -116,7 +118,7 @@ namespace UnityEditor.BehaveGraph
 
         public T FindInputSlot<T>(int slotId) where T : NPBehaveSlot
         {
-            foreach (var slot in m_Slots)
+            foreach (var slot in m_Slots.SelectValue())
             {
                 if (slot.isInputSlot && slot.id == slotId && slot is T)
                     return (T)slot;
@@ -126,7 +128,7 @@ namespace UnityEditor.BehaveGraph
 
         public T FindOutputSlot<T>(int slotId) where T : NPBehaveSlot
         {
-            foreach (var slot in m_Slots)
+            foreach (var slot in m_Slots.SelectValue())
             {
                 if (slot.isOutputSlot && slot.id == slotId && slot is T)
                     return (T)slot;

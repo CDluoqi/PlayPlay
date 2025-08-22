@@ -9,6 +9,7 @@ namespace UnityEditor.BehaveGraph
         public NPBehaveStackNode()
         {
             UpdateNodeAfterDeserialization();
+            m_StackData = new StackData();
         }
         
         const int SlotId = 0;
@@ -18,6 +19,7 @@ namespace UnityEditor.BehaveGraph
             AddSlot(new NPBehaveInputSlot(SlotId));
         }
         
+        [SerializeField]
         StackData m_StackData;
         
         public StackData stackData

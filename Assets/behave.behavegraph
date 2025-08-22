@@ -1,0 +1,100 @@
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.GraphData",
+    "m_ObjectId": "bd3822cd9223419193859935801fed16",
+    "m_Nodes": [
+        {
+            "m_Id": "046fdee8f0194227978acf563ae0a1fb"
+        },
+        {
+            "m_Id": "c198b858ec764fad82c770ac58b24192"
+        }
+    ],
+    "m_Edges": [
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "c198b858ec764fad82c770ac58b24192"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "046fdee8f0194227978acf563ae0a1fb"
+                },
+                "m_SlotId": 0
+            }
+        }
+    ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPAction",
+    "m_ObjectId": "046fdee8f0194227978acf563ae0a1fb",
+    "m_Name": "Action",
+    "m_DrawState": {
+        "m_Expanded": false,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "14194c2a2a3946d595118596c225e80f"
+        }
+    ],
+    "synonyms": [
+        "action"
+    ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPBehaveInputSlot",
+    "m_ObjectId": "14194c2a2a3946d595118596c225e80f",
+    "m_Id": 0,
+    "m_DisplayName": "Node",
+    "m_SlotType": 0,
+    "m_Hidden": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPBehaveOutputSlot",
+    "m_ObjectId": "abac62b64fb342f38f279bb4d6a2080a",
+    "m_Id": 0,
+    "m_DisplayName": "Node",
+    "m_SlotType": 1,
+    "m_Hidden": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPRoot",
+    "m_ObjectId": "c198b858ec764fad82c770ac58b24192",
+    "m_Name": "Root",
+    "m_DrawState": {
+        "m_Expanded": false,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -122.0,
+            "y": 0.0,
+            "width": 73.0,
+            "height": 77.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "abac62b64fb342f38f279bb4d6a2080a"
+        }
+    ],
+    "synonyms": [
+        "time max"
+    ]
+}
+

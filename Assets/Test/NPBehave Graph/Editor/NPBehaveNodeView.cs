@@ -1,27 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.BehaveGraph.Serialization;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Node = UnityEditor.Experimental.GraphView.Node;
 
 namespace UnityEditor.BehaveGraph
 {
-    sealed class NPBehaveNodeView : Node
+    sealed class NPBehaveNodeView : Node, IBehaveNodeView
     {
         VisualElement m_TitleContainer;
+        IEdgeConnectorListener m_ConnectorListener;
 
         public NPBehaveNodeView()
         {
             name = "nodeView";
         }
 
-        public void Initialize(AbstractBehaveNode inNode)
+        public void Initialize(AbstractBehaveNode inNode, IEdgeConnectorListener connectorListener)
         {
             if (inNode == null)
                 return;
             
             title = inNode.name;
+            m_ConnectorListener = connectorListener;
+            node = inNode;
             var slots = new List<NPBehaveSlot>();
             inNode.GetSlots(slots);
             AddSlots(slots);
@@ -50,10 +56,9 @@ namespace UnityEditor.BehaveGraph
         {
             if (slot.hidden)
                 return null;
-            Direction direction = slot.isInputSlot ? Direction.Input : Direction.Output;
-            Port port = InstantiatePort(Orientation.Horizontal, direction, Port.Capacity.Single, null);
-            port.portName = slot.displayName;
-            port.portColor = NPBehaveSlot.slotColor;
+            
+            BehavePort port = BehavePort.Create(slot, m_ConnectorListener);
+            
             if (slot.isInputSlot)
             {
                 inputContainer.Add(port);
@@ -66,6 +71,61 @@ namespace UnityEditor.BehaveGraph
             return port;
         }
 
+        public Node gvNode => this;
+        public AbstractBehaveNode node { get; private set; }
+        public VisualElement colorElement
+        {
+            get { return this; }
+        }
+        public void SetColor(Color newColor)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ResetColor()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UpdatePortInputTypes()
+        {
+            
+        }
+
+        public void UpdateDropdownEntries()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnModified(ModificationScope scope)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void AttachMessage(string errString, ShaderCompilerMessageSeverity severity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ClearMessage()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool FindPort(SlotReference slotRef, out BehavePort port)
+        {
+            port = inputContainer.Query<BehavePort>().ToList()
+                .Concat(outputContainer.Query<BehavePort>().ToList())
+                .First(p => p.slot.slotReference.Equals(slotRef));
+
+            return port != null;
+        }
+        
+        public void Dispose()
+        {
+            node = null;
+            userData = null;
+        }
     }
 }
 

@@ -17,6 +17,7 @@ namespace UnityEditor.BehaveGraph
         
         public Action saveRequested { get; set; }
         SearchWindowProvider m_SearchWindowProvider;
+        EdgeConnectorListener m_EdgeConnectorListener;
         public NPBehaveGraphView graphView 
         { 
             get { return m_GraphView; } 
@@ -55,7 +56,6 @@ namespace UnityEditor.BehaveGraph
                 m_GraphView.AddManipulator(new SelectionDragger()); 
                 m_GraphView.AddManipulator(new RectangleSelector()); 
                 m_GraphView.AddManipulator(new ClickSelector()); 
-                //m_GraphView.StretchToParentSize();
                 content.Add(m_GraphView); 
                 
                 RegisterCallback<GeometryChangedEvent>(ApplySerializedWindowLayouts);
@@ -66,9 +66,12 @@ namespace UnityEditor.BehaveGraph
             m_SearchWindowProvider = ScriptableObject.CreateInstance<NPBehaveSearchProvider>(); 
             m_SearchWindowProvider.Initialize(editorWindow, m_Graph, m_GraphView); 
             m_GraphView.nodeCreationRequest = NodeCreationRequest;
+            m_EdgeConnectorListener = new EdgeConnectorListener(m_Graph, m_SearchWindowProvider, editorWindow);
+            
             
             AddNodes(graph.GetNodes<AbstractBehaveNode>());
-            
+            AddBlocks(graph.GetNodes<NPBehaveBlockNode>());
+            AddEdges(graph.edges);
             Add(content);
             
             //content.StretchToParentSize();
@@ -95,6 +98,20 @@ namespace UnityEditor.BehaveGraph
 
         GraphViewChange GraphViewChanged(GraphViewChange graphViewChange)
         {
+            if (graphViewChange.edgesToCreate != null)
+            {
+                foreach (var edge in graphViewChange.edgesToCreate)
+                {
+                    var leftSlot = edge.output.GetSlot();
+                    var rightSlot = edge.input.GetSlot();
+                    if (leftSlot != null && rightSlot != null)
+                    {
+                        m_Graph.Connect(leftSlot.slotReference, rightSlot.slotReference);
+                    }
+                }
+                graphViewChange.edgesToCreate.Clear();
+            }
+            
             if (graphViewChange.movedElements != null)
             {
                 foreach (var element in graphViewChange.movedElements)
@@ -121,12 +138,32 @@ namespace UnityEditor.BehaveGraph
                 AddNode(node);
             }
         }
+        
+        void AddBlocks(IEnumerable<NPBehaveBlockNode> blocks)
+        {
+            foreach (var node in blocks.OrderBy(s => s.index))
+            {
+                AddNode(node);
+            }
+        }
+        
+        HashSet<IBehaveNodeView> m_NodeViewHashSet = new HashSet<IBehaveNodeView>();
 
         public void HandleGraphChanges(bool wasUndoRedoPerformed)
         {
             foreach (var node in m_Graph.addedNodes)
             {
                 AddNode(node);
+            }
+            
+            var nodesToUpdate = m_NodeViewHashSet;
+            nodesToUpdate.Clear();
+            
+            foreach (var edge in m_Graph.addedEdges)
+            {
+                var edgeView = AddEdge(edge);
+                if (edgeView != null)
+                    nodesToUpdate.Add((IBehaveNodeView)edgeView.input.node);
             }
         }
 
@@ -136,14 +173,14 @@ namespace UnityEditor.BehaveGraph
             
             if (node is NPBehaveStackNode stackNode)
             {
-                var stackNodeView = new NPBehaveStackNodeView(node, m_EditorWindow) { userData = node };
+                var stackNodeView = new NPBehaveStackNodeView(stackNode, m_EditorWindow) { userData = node };
                 m_GraphView.AddStackNodeView(stackNodeView);
                 nodeView = stackNodeView;
             }
             else if (node is NPBehaveBlockNode blockNode)
             {
                 var blockNodeView = new NPBehaveNodeView { userData = blockNode };
-                blockNodeView.Initialize(blockNode);
+                blockNodeView.Initialize(blockNode, m_EdgeConnectorListener);
                 nodeView = blockNodeView;
 
                 NPBehaveStackNodeView stackNodeView = m_GraphView.GetStackNodeView(blockNode.stackData);
@@ -153,10 +190,74 @@ namespace UnityEditor.BehaveGraph
             {
                 var behaveNodeView = new NPBehaveNodeView() { userData = node };
                 m_GraphView.AddElement(behaveNodeView);
-                behaveNodeView.Initialize(node);
+                behaveNodeView.Initialize(node, m_EdgeConnectorListener);
                 nodeView = behaveNodeView;
             }
             nodeView.MarkDirtyRepaint();
+        }
+        
+        void AddEdges(IEnumerable<IEdge> edges)
+        {
+            foreach (IEdge edge in edges)
+            {
+                AddEdge(edge, true, false);
+            }
+        }
+        
+        UnityEditor.Experimental.GraphView.Edge AddEdge(IEdge edge, bool useVisualNodeMap = false, bool updateNodePorts = true)
+        {
+            var sourceNode = edge.outputSlot.node;
+            if (sourceNode == null)
+            {
+                return null;
+            }
+            var sourceSlot = sourceNode.FindOutputSlot<NPBehaveSlot>(edge.outputSlot.slotId);
+            var targetNode = edge.inputSlot.node;
+            if (targetNode == null)
+            {
+                return null;
+            }
+            var targetSlot = targetNode.FindInputSlot<NPBehaveSlot>(edge.inputSlot.slotId);
+
+            var sourceNodeView = m_GraphView.nodes.ToList().OfType<IBehaveNodeView>().FirstOrDefault(x => x.node == sourceNode);
+
+            
+            if (sourceNodeView != null)
+            {
+                sourceNodeView.FindPort(sourceSlot.slotReference, out var sourceAnchor);
+
+                var targetNodeView = m_GraphView.nodes.ToList().OfType<IBehaveNodeView>().First(x => x.node == targetNode);
+
+                targetNodeView.FindPort(targetSlot.slotReference, out var targetAnchor);
+
+                var edgeView = new UnityEditor.Experimental.GraphView.Edge
+                {
+                    userData = edge,
+                    output = sourceAnchor,
+                    input = targetAnchor
+                };
+
+                //edgeView.RegisterCallback<MouseDownEvent>(OnMouseDown);
+                edgeView.output.Connect(edgeView);
+                edgeView.input.Connect(edgeView);
+                m_GraphView.AddElement(edgeView);
+
+                if (updateNodePorts)
+                {
+                    sourceNodeView.gvNode.RefreshPorts();
+                    targetNodeView.gvNode.RefreshPorts();
+                    sourceNodeView.UpdatePortInputTypes();
+                    targetNodeView.UpdatePortInputTypes();
+                }
+
+                return edgeView;
+            }
+            else
+            {
+                Debug.LogError("qqqq");
+            }
+
+            return null;
         }
 
         public void Dispose() 
