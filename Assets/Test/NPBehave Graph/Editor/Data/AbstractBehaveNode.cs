@@ -144,6 +144,14 @@ namespace UnityEditor.BehaveGraph
             }
         }
         
+        public SlotReference GetMainSlotReference()
+        {
+            foreach (var slot in m_Slots.SelectValue())
+            {
+                return slot.slotReference;
+            }
+            throw new ArgumentException("Slot could not be found", "slotId");
+        }
     }
 }
 

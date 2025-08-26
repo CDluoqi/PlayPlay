@@ -87,11 +87,11 @@ namespace UnityEditor.BehaveGraph
         { 
             if (EditorWindow.focusedWindow == m_EditorWindow)
             {
-                m_SearchWindowProvider.target = c.target; 
+                m_SearchWindowProvider.target = c.target ?? null;
                 var displayPosition = (c.screenMousePosition - m_EditorWindow.position.position);
                 NPBehaveStackNodeView stackNodeView = c.target as NPBehaveStackNodeView;
                 SearcherWindow.Show(m_EditorWindow, (m_SearchWindowProvider as NPBehaveSearchProvider).LoadSearchWindow(),
-                    item => (m_SearchWindowProvider as NPBehaveSearchProvider).OnSearcherSelectEntry(item, c.screenMousePosition - m_EditorWindow.position.position, stackNodeView),
+                    item => (m_SearchWindowProvider as NPBehaveSearchProvider).OnSearcherSelectEntry(item, displayPosition, stackNodeView),
                     displayPosition, null, new SearcherWindow.Alignment(SearcherWindow.Alignment.Vertical.Center, SearcherWindow.Alignment.Horizontal.Left)); 
             } 
         }

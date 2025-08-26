@@ -145,23 +145,37 @@ namespace UnityEditor.BehaveGraph
 
         public bool OnSearcherSelectEntry(SearcherItem entry, Vector2 screenMousePosition, NPBehaveStackNodeView stackNodeView = null)
         {
-            if (entry == null)
+            if (entry == null || (entry as SearchNodeItem).NodeGUID.node == null)
                 return true;
-
-            if (entry is SearchNodeItem item)
-            {
-                var node = item.NodeGUID.node;
             
-                if (node == null)
-                    return true;
-                if (stackNodeView != null)
-                {
-                    var blockNode = new NPBehaveBlockNode() { stackData = stackNodeView.stackData };
-                    int index = stackNodeView.GetInsertionIndex(screenMousePosition);
-                    m_Graph.AddBlock(blockNode, stackNodeView.stackData, index);
-                }
-                m_Graph.AddNode(CopyNodeForGraph(node));
+            var nodeEntry = (entry as SearchNodeItem).NodeGUID;
+            
+            var node = CopyNodeForGraph(nodeEntry.node);
+            
+            var windowRoot = m_EditorWindow.rootVisualElement;
+            var windowMousePosition = windowRoot.ChangeCoordinatesTo(windowRoot.parent, screenMousePosition); //- m_EditorWindow.position.position);
+            var graphMousePosition = m_GraphView.contentViewContainer.WorldToLocal(windowMousePosition);
+            var drawState = node.drawState;
+            
+            if (stackNodeView != null)
+            {
+                var blockNode = new NPBehaveBlockNode() { stackData = stackNodeView.stackData };
+                int index = stackNodeView.GetInsertionIndex(screenMousePosition);
+                m_Graph.AddBlock(blockNode, stackNodeView.stackData, index);
+                
+                var fromReference = blockNode.GetMainSlotReference();
+                var toReference = node.GetMainSlotReference();
+                m_Graph.Connect(fromReference, toReference);
+                
+                var stackPos = stackNodeView.parent.ChangeCoordinatesTo(m_GraphView.contentViewContainer, stackNodeView.GetPosition());
+                graphMousePosition.x = stackPos.x + stackNodeView.contentRect.width + 50;
+                drawState.position = new Rect(graphMousePosition, Vector2.zero);
             }
+
+            drawState.position = new Rect(graphMousePosition, Vector2.zero);
+            node.drawState = drawState;
+            
+            m_Graph.AddNode(node);
             return true;
         }
         
