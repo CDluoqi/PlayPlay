@@ -23,16 +23,11 @@ namespace UnityEditor.BehaveGraph
 
         public void OnDrop(GraphView graphView, UnityEditor.Experimental.GraphView.Edge edge)
         {
-            Debug.LogError("OnDrop");
             var leftSlot = edge.output.GetSlot();
             var rightSlot = edge.input.GetSlot();
             if (leftSlot != null && rightSlot != null)
             {
                 m_Graph.Connect(leftSlot.slotReference, rightSlot.slotReference);
-            }
-            else
-            {
-                Debug.LogError("OnDrop22222222222");
             }
         }
     }

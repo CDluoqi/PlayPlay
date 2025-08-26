@@ -73,10 +73,8 @@ namespace UnityEditor.BehaveGraph
 
         public Node gvNode => this;
         public AbstractBehaveNode node { get; private set; }
-        public VisualElement colorElement
-        {
-            get { return this; }
-        }
+        public VisualElement colorElement => this;
+
         public void SetColor(Color newColor)
         {
             throw new System.NotImplementedException();

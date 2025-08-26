@@ -71,6 +71,15 @@ namespace UnityEditor.BehaveGraph
             {
                 DeserializeContextData(node.stackData);
             }
+            
+            foreach (var node in m_Nodes.SelectValue())
+            {
+                node.UpdateNodeAfterDeserialization();
+            }
+            
+            foreach (var edge in m_Edges)
+                AddEdgeToNodeEdges(edge);
+            
         }
         
         void DeserializeContextData(StackData stackData)
@@ -88,6 +97,8 @@ namespace UnityEditor.BehaveGraph
         {
             m_AddedNodes.Clear();
             m_RemovedNodes.Clear();
+            m_AddedEdges.Clear();
+            m_RemovedEdges.Clear();
         }
 
         public void AddNode(AbstractBehaveNode node)
@@ -168,7 +179,15 @@ namespace UnityEditor.BehaveGraph
             var inputSlot = fromSlot.isInputSlot ? fromSlotRef : toSlotRef;
 
             s_TempEdges.Clear();
-            GetEdges(inputSlot, s_TempEdges);
+            GetEdges(fromSlotRef, s_TempEdges);
+
+            foreach (var edge in s_TempEdges)
+            {
+                RemoveEdgeNoValidate(edge);
+            }
+            
+            s_TempEdges.Clear();
+            GetEdges(toSlotRef, s_TempEdges);
 
             foreach (var edge in s_TempEdges)
             {

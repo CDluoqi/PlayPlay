@@ -90,7 +90,15 @@ namespace UnityEditor.BehaveGraph
         
         public bool Equals(NPBehaveSlot other)
         {
-            return m_Id == other.m_Id;
+            return m_Id == other.m_Id && owner == other.owner;
+        }
+        
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((NPBehaveSlot)obj);
         }
     }
 }

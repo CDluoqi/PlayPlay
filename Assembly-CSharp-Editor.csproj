@@ -71,7 +71,6 @@
      <Compile Include="Assets\Test\NPBehave Graph\Editor\NPBehaveOutputSlot.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\Composite\ParallelTest.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Serialization\JsonRef.cs" />
-     <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\INPBehaveNodeView.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.DataProcessorUtility.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\NPObserver.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\NPSucceeder.cs" />

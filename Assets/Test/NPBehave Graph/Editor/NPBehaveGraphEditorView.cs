@@ -159,12 +159,34 @@ namespace UnityEditor.BehaveGraph
             var nodesToUpdate = m_NodeViewHashSet;
             nodesToUpdate.Clear();
             
+            foreach (var edge in m_Graph.removedEdges)
+            {
+                var edgeView = m_GraphView.graphElements.ToList().OfType<UnityEditor.Experimental.GraphView.Edge>().FirstOrDefault(p => p.userData is IEdge && Equals((IEdge)p.userData, edge));
+                if (edgeView != null)
+                {
+                    var nodeView = (IBehaveNodeView)edgeView.input.node;
+                    if (nodeView?.node != null)
+                    {
+                        nodesToUpdate.Add(nodeView);
+                    }
+
+                    edgeView.output.Disconnect(edgeView);
+                    edgeView.input.Disconnect(edgeView);
+
+                    edgeView.output = null;
+                    edgeView.input = null;
+
+                    m_GraphView.RemoveElement(edgeView);
+                }
+            }
+            
             foreach (var edge in m_Graph.addedEdges)
             {
                 var edgeView = AddEdge(edge);
                 if (edgeView != null)
                     nodesToUpdate.Add((IBehaveNodeView)edgeView.input.node);
             }
+            
         }
 
         void AddNode(AbstractBehaveNode node)
@@ -173,7 +195,7 @@ namespace UnityEditor.BehaveGraph
             
             if (node is NPBehaveStackNode stackNode)
             {
-                var stackNodeView = new NPBehaveStackNodeView(stackNode, m_EditorWindow) { userData = node };
+                var stackNodeView = new NPBehaveStackNodeView(stackNode, m_EditorWindow, m_EdgeConnectorListener) { userData = node };
                 m_GraphView.AddStackNodeView(stackNodeView);
                 nodeView = stackNodeView;
             }
@@ -252,10 +274,6 @@ namespace UnityEditor.BehaveGraph
 
                 return edgeView;
             }
-            else
-            {
-                Debug.LogError("qqqq");
-            }
 
             return null;
         }
@@ -266,7 +284,7 @@ namespace UnityEditor.BehaveGraph
             { 
                 saveRequested = null;
                 
-                foreach (var node in m_GraphView.Children().OfType<INPBehaveNodeView>()) 
+                foreach (var node in m_GraphView.Children().OfType<IBehaveNodeView>()) 
                     node.Dispose(); 
                 m_GraphView.nodeCreationRequest = null; 
                 m_GraphView = null; 

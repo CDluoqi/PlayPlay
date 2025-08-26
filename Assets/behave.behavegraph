@@ -8,6 +8,15 @@
         },
         {
             "m_Id": "c198b858ec764fad82c770ac58b24192"
+        },
+        {
+            "m_Id": "945f7a59df5548608fd36c2448e9897a"
+        },
+        {
+            "m_Id": "e00655cb63ba4455933a60dd733b826b"
+        },
+        {
+            "m_Id": "0671dfa1d6da42b2b0dbd5b8415b18d2"
         }
     ],
     "m_Edges": [
@@ -20,7 +29,21 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "046fdee8f0194227978acf563ae0a1fb"
+                    "m_Id": "945f7a59df5548608fd36c2448e9897a"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "e00655cb63ba4455933a60dd733b826b"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "0671dfa1d6da42b2b0dbd5b8415b18d2"
                 },
                 "m_SlotId": 0
             }
@@ -30,9 +53,167 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPBehaveOutputSlot",
+    "m_ObjectId": "013bb0212b254beeb0856c84a8848221",
+    "m_Id": 0,
+    "m_DisplayName": "Node",
+    "m_SlotType": 1,
+    "m_Hidden": false
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.BehaveGraph.NPAction",
     "m_ObjectId": "046fdee8f0194227978acf563ae0a1fb",
     "m_Name": "Action",
+    "m_DrawState": {
+        "m_Expanded": false,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 234.0,
+            "y": 133.0,
+            "width": 83.0,
+            "height": 77.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "0f060b558985466faf77ae42f2eff583"
+        }
+    ],
+    "synonyms": [
+        "action"
+    ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPAction",
+    "m_ObjectId": "0671dfa1d6da42b2b0dbd5b8415b18d2",
+    "m_Name": "Action",
+    "m_DrawState": {
+        "m_Expanded": false,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 234.0,
+            "y": 248.0,
+            "width": 83.0,
+            "height": 77.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "48be9d4f5ced4c19956efc247b42b26b"
+        }
+    ],
+    "synonyms": [
+        "action"
+    ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPBehaveInputSlot",
+    "m_ObjectId": "0f060b558985466faf77ae42f2eff583",
+    "m_Id": 0,
+    "m_DisplayName": "Node",
+    "m_SlotType": 0,
+    "m_Hidden": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPBehaveInputSlot",
+    "m_ObjectId": "161a4855875242a18c13987a0f4727dd",
+    "m_Id": 0,
+    "m_DisplayName": "Node",
+    "m_SlotType": 0,
+    "m_Hidden": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPBehaveInputSlot",
+    "m_ObjectId": "48be9d4f5ced4c19956efc247b42b26b",
+    "m_Id": 0,
+    "m_DisplayName": "Node",
+    "m_SlotType": 0,
+    "m_Hidden": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPBehaveOutputSlot",
+    "m_ObjectId": "4acff7292e7a42f9b97f7a5c4a692838",
+    "m_Id": 0,
+    "m_DisplayName": "Node",
+    "m_SlotType": 1,
+    "m_Hidden": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPSequence",
+    "m_ObjectId": "945f7a59df5548608fd36c2448e9897a",
+    "m_Name": "Sequence",
+    "m_DrawState": {
+        "m_Expanded": false,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 21.0,
+            "y": 146.0,
+            "width": 150.0,
+            "height": 118.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "161a4855875242a18c13987a0f4727dd"
+        }
+    ],
+    "synonyms": [
+        "sequence",
+        "arr"
+    ],
+    "m_StackData": {
+        "m_Blocks": [
+            {
+                "m_Id": "e00655cb63ba4455933a60dd733b826b"
+            }
+        ]
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPRoot",
+    "m_ObjectId": "c198b858ec764fad82c770ac58b24192",
+    "m_Name": "Root",
+    "m_DrawState": {
+        "m_Expanded": false,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -106.00003051757813,
+            "y": 171.0,
+            "width": 73.00004577636719,
+            "height": 76.99998474121094
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "013bb0212b254beeb0856c84a8848221"
+        }
+    ],
+    "synonyms": [
+        "time max"
+    ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPBehaveBlockNode",
+    "m_ObjectId": "e00655cb63ba4455933a60dd733b826b",
+    "m_Name": "",
     "m_DrawState": {
         "m_Expanded": false,
         "m_Position": {
@@ -45,56 +226,9 @@
     },
     "m_Slots": [
         {
-            "m_Id": "14194c2a2a3946d595118596c225e80f"
+            "m_Id": "4acff7292e7a42f9b97f7a5c4a692838"
         }
     ],
-    "synonyms": [
-        "action"
-    ]
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBehaveInputSlot",
-    "m_ObjectId": "14194c2a2a3946d595118596c225e80f",
-    "m_Id": 0,
-    "m_DisplayName": "Node",
-    "m_SlotType": 0,
-    "m_Hidden": false
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBehaveOutputSlot",
-    "m_ObjectId": "abac62b64fb342f38f279bb4d6a2080a",
-    "m_Id": 0,
-    "m_DisplayName": "Node",
-    "m_SlotType": 1,
-    "m_Hidden": false
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPRoot",
-    "m_ObjectId": "c198b858ec764fad82c770ac58b24192",
-    "m_Name": "Root",
-    "m_DrawState": {
-        "m_Expanded": false,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": -122.0,
-            "y": 0.0,
-            "width": 73.0,
-            "height": 77.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "abac62b64fb342f38f279bb4d6a2080a"
-        }
-    ],
-    "synonyms": [
-        "time max"
-    ]
+    "synonyms": []
 }
 
