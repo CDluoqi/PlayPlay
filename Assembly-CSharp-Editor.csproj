@@ -159,8 +159,12 @@
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Edge.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.ColorProcessor.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\NPRandom.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\NPDecorator.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Drawing\Controls\IControlAttribute.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Drawing\Controls\EnumControl.cs" />
      <Folder Include="Assets\Test\NPBehave Graph\Editor\Importers" />
      <Folder Include="Assets\Test\NPBehave Graph\Editor\Data\Node" />
+     <Folder Include="Assets\Test\NPBehave Graph\Editor\Drawing\Controls" />
      <Folder Include="Assets\Test\NPBehave Graph\Editor\Resources\Styles" />
      <None Include="Assets\Test\NPBehave Graph\Editor\Resources\Styles\NPBehaveGraphView.uss" />
      <Folder Include="Assets\GameMain\Scripts\Editor\DataTableGenerator" />
@@ -169,6 +173,7 @@
      <None Include="Assets\Test\NPBehave Graph\Editor\Resources\Styles\NPBehaveStackNodeView.uss" />
      <Folder Include="Assets\Test\NPBehave Graph\Editor\Data\Attributes" />
      <Folder Include="Assets\Test\NPBehave Graph\Editor" />
+     <Folder Include="Assets\Test\NPBehave Graph\Editor\Drawing" />
      <Folder Include="Assets\Test\NPBehave Graph\Editor\Serialization" />
      <Folder Include="Assets\Test\NPBehave\Editor\Tests\_utils" />
      <None Include="Assets\Test\NPBehave Graph\Editor\Resources\Styles\NPBehaveBlockNodeView.uss" />

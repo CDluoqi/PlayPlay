@@ -1,10 +1,11 @@
 namespace UnityEditor.BehaveGraph
 {
     [Title("Decorator", "NPService")]
-    class NPService : AbstractBehaveNode
+    class NPService : NPDecorator
     {
         public NPService()
         {
+            
         }
     }
 }

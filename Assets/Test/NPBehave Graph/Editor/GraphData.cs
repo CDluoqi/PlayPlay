@@ -107,6 +107,27 @@ namespace UnityEditor.BehaveGraph
             m_AddedNodes.Add(node);
         }
         
+        public void RemoveNode(AbstractBehaveNode node)
+        {
+            if (!node.canDeleteNode)
+            {
+                throw new InvalidOperationException($"Node {node.name} ({node.objectId}) cannot be deleted.");
+            }
+            RemoveNodeNoValidate(node);
+            ValidateGraph();
+        }
+        
+        void RemoveNodeNoValidate(AbstractBehaveNode node)
+        {
+            m_Nodes.Remove(node);
+            m_RemovedNodes.Add(node);
+
+            if (node is NPBehaveBlockNode blockNode && blockNode.stackData != null)
+            {
+                blockNode.stackData.blocks.Remove(blockNode);
+            }
+        }
+        
         public void AddBlock(NPBehaveBlockNode blockNode, StackData stackData, int index)
         {
             AddNode(blockNode);
@@ -208,6 +229,27 @@ namespace UnityEditor.BehaveGraph
             var newEdge = ConnectNoValidate(fromSlotRef, toSlotRef);
             ValidateGraph();
             return newEdge;
+        }
+
+        public void RemoveElements(AbstractBehaveNode[] nodes, IEdge[] edges)
+        {
+            foreach (var node in nodes)
+            {
+                if (!node.canDeleteNode)
+                {
+                    throw new InvalidOperationException($"Node {node.name} ({node.objectId}) cannot be deleted.");
+                }
+            }
+            
+            foreach (var edge in edges.ToArray())
+            {
+                RemoveEdgeNoValidate(edge);
+            }
+            
+            foreach (var serializableNode in nodes)
+            {
+                RemoveNodeNoValidate(serializableNode);
+            }
         }
         
         void RemoveEdgeNoValidate(IEdge e, bool reevaluateActivity = true)
