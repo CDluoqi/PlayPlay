@@ -34,6 +34,7 @@ namespace UnityEditor.BehaveGraph
             m_ConnectorListener = connectorListener;
             node = inNode;
             
+            styleSheets.Add(Resources.Load<StyleSheet>("Styles/NPBehaveNodeView"));
             var contents = this.Q("contents");
             
             var controlsContainer = new  VisualElement { name = "controls" };

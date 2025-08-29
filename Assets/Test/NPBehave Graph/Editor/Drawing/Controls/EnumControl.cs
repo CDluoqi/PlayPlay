@@ -30,6 +30,7 @@ namespace UnityEditor.BehaveGraph.Drawing.Controls
         public EnumControlView(string label, AbstractBehaveNode node, PropertyInfo propertyInfo)
         {
             styleSheets.Add(Resources.Load<StyleSheet>("Styles/Controls/EnumControlView"));
+            name = "controlAttribute";
             m_Node = node;
             m_PropertyInfo = propertyInfo;
             if (!propertyInfo.PropertyType.IsEnum)
