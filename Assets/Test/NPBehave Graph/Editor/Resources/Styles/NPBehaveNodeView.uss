@@ -1,0 +1,35 @@
+#controlAttribute
+{
+    flex-direction: row;
+    align-items: center;
+    padding-left: 8px;
+    margin-bottom: 1px;
+    background-color: #393939;
+}
+
+
+.unity-base-field {
+    width: 80px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.unity-base-field__input {
+    margin-left: 0;
+}
+
+#controlAttribute > Label {
+    max-width: 94px;
+    width: 30px;
+    -unity-text-align: middle-left;
+    flex-grow: 1;
+    margin-right: 8px;
+}
+
+#controlAttribute > TextField {
+    max-width: 94px;
+    width: 30px;
+    -unity-text-align: middle-left;
+    flex-grow: 1;
+    margin-right: 8px;
+}

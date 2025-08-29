@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using UnityEditor.BehaveGraph.Drawing.Controls;
 using UnityEditor.BehaveGraph.Serialization;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.Rendering;
@@ -13,6 +15,9 @@ namespace UnityEditor.BehaveGraph
     sealed class NPBehaveNodeView : Node, IBehaveNodeView
     {
         VisualElement m_TitleContainer;
+        VisualElement m_ControlItems;
+        VisualElement m_ControlsDivider;
+        VisualElement m_DropdownItems;
         IEdgeConnectorListener m_ConnectorListener;
 
         public NPBehaveNodeView()
@@ -28,6 +33,32 @@ namespace UnityEditor.BehaveGraph
             title = inNode.name;
             m_ConnectorListener = connectorListener;
             node = inNode;
+            
+            styleSheets.Add(Resources.Load<StyleSheet>("Styles/NPBehaveNodeView"));
+            
+            var contents = this.Q("contents");
+            
+            var controlsContainer = new  VisualElement { name = "controls" };
+            {
+                m_ControlsDivider = new VisualElement { name = "divider" };
+                m_ControlsDivider.AddToClassList("horizontal");
+                controlsContainer.Add(m_ControlsDivider);
+                m_ControlItems = new VisualElement { name = "items" };
+                controlsContainer.Add(m_ControlItems);
+
+                foreach (var propertyInfo in node.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
+                {
+                    foreach (IControlAttribute attribute in propertyInfo.GetCustomAttributes(typeof(IControlAttribute),
+                                 false))
+                    {
+                        m_ControlItems.Add(attribute.InstantiateControl(node, propertyInfo));
+                    }
+                }
+            }
+            
+            if (m_ControlItems.childCount > 0)
+                contents.Add(controlsContainer);
+            
             var slots = new List<NPBehaveSlot>();
             inNode.GetSlots(slots);
             AddSlots(slots);

@@ -6,7 +6,6 @@ using UnityEditor.Searcher;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Object = UnityEngine.Object;
-
 namespace UnityEditor.BehaveGraph
 {
     class NPBehaveGraphEditorView : VisualElement, IDisposable 
@@ -124,6 +123,29 @@ namespace UnityEditor.BehaveGraph
                     }
                 }
             }
+            
+            var nodesToUpdate = m_NodeViewHashSet;
+            nodesToUpdate.Clear();
+            
+            if (graphViewChange.elementsToRemove != null)
+            {
+                m_Graph.RemoveElements(graphViewChange.elementsToRemove.OfType<IBehaveNodeView>().Select(v => v.node).ToArray(),
+                    graphViewChange.elementsToRemove.OfType<UnityEditor.Experimental.GraphView.Edge>().Select(e => (IEdge)e.userData).ToArray());
+                foreach (var edge in graphViewChange.elementsToRemove.OfType<UnityEditor.Experimental.GraphView.Edge>())
+                {
+                    if (edge.input != null)
+                    {
+                        if (edge.input.node is IBehaveNodeView materialNodeView)
+                            nodesToUpdate.Add(materialNodeView);
+                    }
+                    if (edge.output != null)
+                    {
+                        if (edge.output.node is IBehaveNodeView materialNodeView)
+                            nodesToUpdate.Add(materialNodeView);
+                    }
+                }
+            }
+            
             return graphViewChange;
         }
 

@@ -6,8 +6,12 @@ using UnityEngine;
 
 namespace UnityEditor.BehaveGraph
 {
+    internal delegate void OnNodeModified(AbstractBehaveNode node, ModificationScope scope);
+    
     abstract class AbstractBehaveNode : JsonObject
     {
+        
+        
         [SerializeField]
         private string m_Name;
         
@@ -17,6 +21,24 @@ namespace UnityEditor.BehaveGraph
         [SerializeField]
         List<JsonData<NPBehaveSlot>> m_Slots = new List<JsonData<NPBehaveSlot>>();
         
+        OnNodeModified m_OnModified;
+        
+        public void RegisterCallback(OnNodeModified callback)
+        {
+            m_OnModified += callback;
+        }
+
+        public void UnregisterCallback(OnNodeModified callback)
+        {
+            m_OnModified -= callback;
+        }
+        
+        public void Dirty(ModificationScope scope)
+        {
+            if (m_OnModified != null)
+                m_OnModified(this, scope);
+        }
+        
         public string name
         {
             get { return m_Name; }
@@ -24,6 +46,8 @@ namespace UnityEditor.BehaveGraph
         }
 
         public string[] synonyms;
+        
+        public virtual bool canDeleteNode => true;
         
         public DrawState drawState
         {
