@@ -25,11 +25,3 @@
     flex-grow: 1;
     margin-right: 8px;
 }
-
-#controlAttribute > TextField {
-    max-width: 94px;
-    width: 30px;
-    -unity-text-align: middle-left;
-    flex-grow: 1;
-    margin-right: 8px;
-}

@@ -47,8 +47,7 @@ namespace UnityEditor.BehaveGraph
 
                 foreach (var propertyInfo in node.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
                 {
-                    foreach (IControlAttribute attribute in propertyInfo.GetCustomAttributes(typeof(IControlAttribute),
-                                 false))
+                    foreach (IControlAttribute attribute in propertyInfo.GetCustomAttributes(typeof(IControlAttribute),false))
                     {
                         m_ControlItems.Add(attribute.InstantiateControl(node, propertyInfo));
                     }

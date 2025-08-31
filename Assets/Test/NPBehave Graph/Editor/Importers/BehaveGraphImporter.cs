@@ -1,6 +1,7 @@
 using System.IO;
 using System.Text;
 using UnityEditor.AssetImporters;
+using UnityEditor.BehaveGraph.Serialization;
 using UnityEngine;
 
 namespace UnityEditor.BehaveGraph
@@ -20,7 +21,15 @@ namespace UnityEditor.BehaveGraph
             {
                 Debug.LogError("No Icon");
             }
+
+            var graph = new GraphData();
+            MultiJson.Deserialize(graph, mainAsset.text);
+            graph.OnEnable();
+            graph.ValidateGraph();
+
+            
             ctx.AddObjectToAsset("MainAsset", mainAsset, texture);
+            ctx.AddObjectToAsset("texture", texture);
             ctx.SetMainObject(mainAsset);
         }
     }

@@ -38,9 +38,8 @@ namespace UnityEditor.BehaveGraph.Drawing.Controls
             m_Node = node;
             m_PropertyInfo = propertyInfo;
             label = label ?? ObjectNames.NicifyVariableName(propertyInfo.Name);
-            var container = new VisualElement { name = "container" };
             var thisLabel = new Label(label);
-            container.Add(thisLabel);
+            Add(thisLabel);
             m_Value = GetValue();
             string value = null;
             var field = new TextField { value = m_Value };
@@ -70,8 +69,7 @@ namespace UnityEditor.BehaveGraph.Drawing.Controls
 
                 this.MarkDirtyRepaint();
             });
-            container.Add(field);
-            Add(container);
+            Add(field);
         }
 
         string GetValue()

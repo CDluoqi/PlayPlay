@@ -10,8 +10,6 @@ namespace UnityEditor.BehaveGraph
     
     abstract class AbstractBehaveNode : JsonObject
     {
-        
-        
         [SerializeField]
         private string m_Name;
         
