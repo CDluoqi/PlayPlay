@@ -6,6 +6,7 @@ namespace UnityEditor.BehaveGraph
     [Title("Decorator", "BlackboardCondition")]
     class NPBlackboardCondition : NPDecorator
     {
+        public override NPBehaveNodeType nodeType => NPBehaveNodeType.BlackboardCondition;
         public NPBlackboardCondition()
         {
             name = "BlackboardCondition";

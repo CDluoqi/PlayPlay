@@ -3,10 +3,10 @@ using System.Text;
 using UnityEditor.AssetImporters;
 using UnityEditor.BehaveGraph.Serialization;
 using UnityEngine;
+using NPBehave;
 
 namespace UnityEditor.BehaveGraph
 {
-    
     [ScriptedImporter(1, Extension, -900)]
     public class BehaveGraphImporter : ScriptedImporter
     {
@@ -26,12 +26,17 @@ namespace UnityEditor.BehaveGraph
             MultiJson.Deserialize(graph, mainAsset.text);
             graph.OnEnable();
             graph.ValidateGraph();
-
             
+            string config = graph.ConvertToConfig();
+            NPBehaveTreeAsset behaveTreeAsset = NPBehaveTreeAsset.Create(config);
+            behaveTreeAsset.name = Path.GetFileNameWithoutExtension(ctx.assetPath);
+            Debug.Log(config);
             ctx.AddObjectToAsset("MainAsset", mainAsset, texture);
-            ctx.AddObjectToAsset("texture", texture);
+            ctx.AddObjectToAsset("BehaveTreeAsset", behaveTreeAsset);
             ctx.SetMainObject(mainAsset);
         }
     }
+    
+
 }
 

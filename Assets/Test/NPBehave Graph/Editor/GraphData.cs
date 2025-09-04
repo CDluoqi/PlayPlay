@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.BehaveGraph.Serialization;
 using UnityEngine;
 using System.Linq;
+using NPBehave;
 using Unity.VisualScripting;
 
 namespace UnityEditor.BehaveGraph
@@ -289,6 +290,78 @@ namespace UnityEditor.BehaveGraph
             
         }
 
+        public string ConvertToConfig()
+        {
+            NPRoot root = null;
+            foreach (var node in GetNodes<NPRoot>())
+            {
+                root = node;
+                break;
+            }
+
+            if (root == null)
+            {
+                return "fuck";
+            }
+
+            NodeConfig config = GetNodeConfig(root);
+            return JsonUtility.ToJson(config);
+        }
+        
+        NodeConfig GetNodeConfig(AbstractBehaveNode node)
+        {
+            NodeConfig nodeConfig = new NodeConfig
+            {
+                nodeType = node.nodeType
+            };
+            if (nodeConfig.nodeType == NPBehaveNodeType.Unknown)
+            {
+                Debug.LogError("Unknown node type " + node.GetType());
+            }
+               
+            NodeConfig[] childNodeConfigs = null;
+            if (node is NPBehaveStackNode stackNode)
+            {
+                List<NodeConfig>  nodeConfigs = new List<NodeConfig>();
+                var blockNodes = stackNode.stackData.blocks.SelectValue().ToList();
+                foreach (var blockNode in blockNodes)
+                {
+                    NodeConfig childNodeConfig = GetConnectedNodeConfig(blockNode);
+                    nodeConfigs.Add(childNodeConfig);
+                }
+                childNodeConfigs = nodeConfigs.ToArray();
+            }
+            else
+            {
+                NodeConfig childNodeConfig = GetConnectedNodeConfig(node);
+                if (childNodeConfig != null)
+                {
+                    childNodeConfigs = new[] { childNodeConfig };
+                }
+            }
+
+            nodeConfig.nodes = childNodeConfigs;
+            return nodeConfig;
+        }
+
+        NodeConfig GetConnectedNodeConfig(AbstractBehaveNode node)
+        {
+            List<NPBehaveOutputSlot> foundSlot = new List<NPBehaveOutputSlot>();
+            node.GetSlots(foundSlot);
+
+            foreach (var outputSlot in foundSlot)
+            {
+                List<IEdge> foundEdges = new List<IEdge>();
+                GetEdges(outputSlot.slotReference, foundEdges);
+                foreach (var edge in foundEdges)
+                {
+                    return GetNodeConfig(edge.inputSlot.node);
+                }
+                break;
+            }
+            return null;
+        }
+        
     }
 }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NPBehave;
 using UnityEditor.BehaveGraph.Serialization;
 using UnityEngine;
 
@@ -46,6 +47,8 @@ namespace UnityEditor.BehaveGraph
         public string[] synonyms;
         
         public virtual bool canDeleteNode => true;
+        
+        public virtual NPBehaveNodeType nodeType => NPBehaveNodeType.Unknown;
         
         public DrawState drawState
         {
