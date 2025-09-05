@@ -1,4 +1,6 @@
 using NPBehave;
+using UnityEditor.BehaveGraph.Drawing.Controls;
+using UnityEngine;
 
 namespace UnityEditor.BehaveGraph
 {
@@ -11,6 +13,24 @@ namespace UnityEditor.BehaveGraph
             name = "Action";
             synonyms = new string[] { "action" };
         }
+        
+        [SerializeField]
+        private string m_ActionName = "";
+        
+        [ActionNameControl("Name")]
+        public string ActionName
+        {
+            get { return m_ActionName; }
+            set
+            {
+                if (m_ActionName == value)
+                    return;
+
+                m_ActionName = value;
+                Dirty(ModificationScope.Graph);
+            }
+        }
+
     }
 }
 

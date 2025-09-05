@@ -115,6 +115,9 @@
      <Compile Include="Assets\Test\NPBehave\Scripts\Container.cs" />
      <Compile Include="Assets\Test\NPBehave\Scripts\Task\WaitUntilStopped.cs" />
      <Compile Include="Assets\Test\NPBehave\Scripts\Exception.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Runtime\NPBehaveFunctionAttribute.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Examples\MyRunner.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Examples\YouRunner.cs" />
      <Folder Include="Assets" />
      <None Include="Assets\GameMain\Configs\DefaultConfig.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

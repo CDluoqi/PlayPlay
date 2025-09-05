@@ -6,6 +6,7 @@ namespace NPBehave
 {
     public class NPBehaveTreeAsset : ScriptableObject
     {
+        [SerializeField]
         private string _code = "";
         public string Code => _code;
      
@@ -18,6 +19,7 @@ namespace NPBehave
 
         private void Initialize(string text)
         {
+            Debug.Log(text);
             _code = text;
         }
     }

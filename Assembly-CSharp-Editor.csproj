@@ -101,7 +101,6 @@
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableGenerator.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\NPFailer.cs" />
      <Compile Include="Assets\Test\NPBehave\Editor\Tests\GeneralTest.cs" />
-     <Compile Include="Assets\Test\NPBehave Graph\Editor\NPBehaveGraphData.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\DrawState.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.UInt64Processor.cs" />
@@ -164,6 +163,8 @@
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Edge.cs" />
      <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableProcessor.ColorProcessor.cs" />
      <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\Node\NPRandom.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Data\NPBehaveFunctionCache.cs" />
+     <Compile Include="Assets\Test\NPBehave Graph\Editor\Drawing\Controls\ActionControl.cs" />
      <Folder Include="Assets\Test\NPBehave Graph\Editor\Importers" />
      <Folder Include="Assets\Test\NPBehave Graph\Editor\Data\Node" />
      <Folder Include="Assets\Test\NPBehave Graph\Editor\Drawing\Controls" />
