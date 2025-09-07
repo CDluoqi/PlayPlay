@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 using Object = UnityEngine.Object;
 namespace UnityEditor.BehaveGraph
 {
-    class NPBehaveGraphEditorView : VisualElement, IDisposable 
+    class NPBehaveGraphEditorView : VisualElement, IDisposable, ISearchView
     {
         EditorWindow m_EditorWindow;
         NPBehaveGraphView m_GraphView;
@@ -17,6 +17,8 @@ namespace UnityEditor.BehaveGraph
         public Action saveRequested { get; set; }
         SearchWindowProvider m_SearchWindowProvider;
         EdgeConnectorListener m_EdgeConnectorListener;
+        
+        FunctionSearchWindowProvider m_FunctionSearchWindowProvider;
         public NPBehaveGraphView graphView 
         { 
             get { return m_GraphView; } 
@@ -66,6 +68,9 @@ namespace UnityEditor.BehaveGraph
             m_SearchWindowProvider.Initialize(editorWindow, m_Graph, m_GraphView); 
             m_GraphView.nodeCreationRequest = NodeCreationRequest;
             m_EdgeConnectorListener = new EdgeConnectorListener(m_Graph, m_SearchWindowProvider, editorWindow);
+
+            m_FunctionSearchWindowProvider = new FunctionSearchWindowProvider();
+            m_FunctionSearchWindowProvider.Initialize();
             
             
             AddNodes(graph.GetNodes<AbstractBehaveNode>());
@@ -93,6 +98,20 @@ namespace UnityEditor.BehaveGraph
                     item => (m_SearchWindowProvider as NPBehaveSearchProvider).OnSearcherSelectEntry(item, displayPosition, stackNodeView),
                     displayPosition, null, new SearcherWindow.Alignment(SearcherWindow.Alignment.Vertical.Center, SearcherWindow.Alignment.Horizontal.Left)); 
             } 
+        }
+
+        public void FindFunction(Vector2 screenMousePosition)
+        {
+            if (EditorWindow.focusedWindow == m_EditorWindow)
+            {
+                Vector2 localPos = Event.current.mousePosition;
+                Vector2 screenPos = GUIUtility.GUIToScreenPoint(localPos);
+                
+                var displayPosition = (screenPos - m_EditorWindow.position.position);
+                SearcherWindow.Show(m_EditorWindow, m_FunctionSearchWindowProvider.LoadSearchWindow(), 
+                    item => m_FunctionSearchWindowProvider.OnSearcherSelectEntry(item), displayPosition,null,
+                    new SearcherWindow.Alignment(SearcherWindow.Alignment.Vertical.Center, SearcherWindow.Alignment.Horizontal.Left));
+            }
         }
 
         GraphViewChange GraphViewChanged(GraphViewChange graphViewChange)
@@ -224,7 +243,7 @@ namespace UnityEditor.BehaveGraph
             else if (node is NPBehaveBlockNode blockNode)
             {
                 var blockNodeView = new NPBehaveNodeView { userData = blockNode };
-                blockNodeView.Initialize(blockNode, m_EdgeConnectorListener);
+                blockNodeView.Initialize(blockNode, m_EdgeConnectorListener, this);
                 nodeView = blockNodeView;
 
                 NPBehaveStackNodeView stackNodeView = m_GraphView.GetStackNodeView(blockNode.stackData);
@@ -234,7 +253,7 @@ namespace UnityEditor.BehaveGraph
             {
                 var behaveNodeView = new NPBehaveNodeView() { userData = node };
                 m_GraphView.AddElement(behaveNodeView);
-                behaveNodeView.Initialize(node, m_EdgeConnectorListener);
+                behaveNodeView.Initialize(node, m_EdgeConnectorListener, this);
                 nodeView = behaveNodeView;
             }
             nodeView.MarkDirtyRepaint();

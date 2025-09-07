@@ -25,3 +25,10 @@
     flex-grow: 1;
     margin-right: 8px;
 }
+
+#controlAttribute > DropdownField{
+    max-width: 100px;
+    width: 80px;
+    -unity-text-align: middle-left;
+    flex-grow: 1;
+}

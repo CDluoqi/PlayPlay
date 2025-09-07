@@ -16,7 +16,7 @@ namespace UnityEditor.BehaveGraph.Drawing.Controls
             m_Label = label;
         }
 
-        public VisualElement InstantiateControl(AbstractBehaveNode node, PropertyInfo propertyInfo)
+        public VisualElement InstantiateControl(AbstractBehaveNode node, PropertyInfo propertyInfo, ISearchView searchView)
         {
             return new EnumControlView(m_Label, node, propertyInfo);
         }

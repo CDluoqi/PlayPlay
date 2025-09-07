@@ -19,19 +19,21 @@ namespace UnityEditor.BehaveGraph
         VisualElement m_ControlsDivider;
         VisualElement m_DropdownItems;
         IEdgeConnectorListener m_ConnectorListener;
+        private ISearchView m_SearchView;
 
         public NPBehaveNodeView()
         {
             name = "nodeView";
         }
 
-        public void Initialize(AbstractBehaveNode inNode, IEdgeConnectorListener connectorListener)
+        public void Initialize(AbstractBehaveNode inNode, IEdgeConnectorListener connectorListener, ISearchView searchView)
         {
             if (inNode == null)
                 return;
             
             title = inNode.name;
             m_ConnectorListener = connectorListener;
+            m_SearchView = searchView;
             node = inNode;
             
             styleSheets.Add(Resources.Load<StyleSheet>("Styles/NPBehaveNodeView"));
@@ -49,7 +51,7 @@ namespace UnityEditor.BehaveGraph
                 {
                     foreach (IControlAttribute attribute in propertyInfo.GetCustomAttributes(typeof(IControlAttribute),false))
                     {
-                        m_ControlItems.Add(attribute.InstantiateControl(node, propertyInfo));
+                        m_ControlItems.Add(attribute.InstantiateControl(node, propertyInfo, m_SearchView));
                     }
                 }
             }

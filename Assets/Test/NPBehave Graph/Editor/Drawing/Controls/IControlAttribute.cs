@@ -6,6 +6,6 @@ namespace UnityEditor.BehaveGraph.Drawing.Controls
 {
     interface IControlAttribute
     {
-        VisualElement InstantiateControl(AbstractBehaveNode node, PropertyInfo propertyInfo);
+        VisualElement InstantiateControl(AbstractBehaveNode node, PropertyInfo propertyInfo, ISearchView searchView);
     }
 }
