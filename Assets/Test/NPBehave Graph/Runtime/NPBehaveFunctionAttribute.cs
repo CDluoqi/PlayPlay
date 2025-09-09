@@ -5,22 +5,31 @@ using UnityEngine;
 
 namespace NPBehave
 {
+    public enum FuncPurpose
+    {
+        Any,
+        Action,
+        Wait,
+        BlackboardQuery,
+        Condition,
+        Observer,
+        Service,
+        WaitForCondition
+    }
+    
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class FunctionNameAttribute : Attribute
     {
         public string Name { get; }
+        public FuncPurpose  Purpose { get; }
 
-        public FunctionNameAttribute(string name)
+        public string Help { get; }
+
+        public FunctionNameAttribute(string name, FuncPurpose purpose = FuncPurpose.Any, string help = "")
         {
             Name = name;
-        }
-    }
-    
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-    public class ActionNameAttribute : FunctionNameAttribute
-    {
-        public ActionNameAttribute(string name) : base(name)
-        {
+            Purpose = purpose;
+            Help = help;
         }
     }
 }

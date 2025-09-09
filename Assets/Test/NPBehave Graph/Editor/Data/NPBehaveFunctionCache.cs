@@ -18,8 +18,6 @@ namespace UnityEditor.BehaveGraph
             ReCacheKnownFunctions();
         }
         
-        
-
         private static void ReCacheKnownFunctions()
         {
             m_KnownFunctionLookupTable  = new Dictionary<Type, List<FunctionNameAttribute>>();

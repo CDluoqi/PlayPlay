@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
+using NPBehave;
 
 namespace UnityEditor.BehaveGraph
 {
     public interface ISearchView
     {
-        void FindFunction(Vector2 screenMousePosition);
+        void FindFunction(Action<string> selectedAction, FuncPurpose purpose = FuncPurpose.Any);
     }
 }
 

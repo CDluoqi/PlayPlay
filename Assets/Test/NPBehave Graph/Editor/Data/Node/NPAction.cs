@@ -15,20 +15,26 @@ namespace UnityEditor.BehaveGraph
         }
         
         [SerializeField]
-        private string m_ActionName = "";
+        private string m_FunctionName = "";
         
-        [ActionNameControl("Name")]
-        public string ActionName
+        [FunctionControl("Func", FuncPurpose.Action)]
+        public string FunctionName
         {
-            get { return m_ActionName; }
+            get => m_FunctionName;
             set
             {
-                if (m_ActionName == value)
+                if (m_FunctionName == value)
                     return;
 
-                m_ActionName = value;
+                m_FunctionName = value;
                 Dirty(ModificationScope.Graph);
             }
+        }
+        
+        public override string ParamToJson()
+        {
+            NPActionParam param = new NPActionParam() { functionName = m_FunctionName };
+            return JsonUtility.ToJson(param);
         }
 
     }

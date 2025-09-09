@@ -1,68 +1,48 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using NPBehave;
 using UnityEditor.Searcher;
 using UnityEngine;
 
 namespace UnityEditor.BehaveGraph
 {
-    internal struct FuncEntry
-    {
-        public string name;
-    }
-    
     class FunctionSearchWindowProvider
     {
-        public bool regenerateEntries { get; set; }
-        
-        public Dictionary<string, List<FuncEntry>> currentFuncEntries  = new Dictionary<string, List<FuncEntry>>();
-        
-        public void Initialize()
+        public Searcher.Searcher LoadSearchWindow(FuncPurpose purpose = FuncPurpose.Any)
         {
-            GenerateFuncEntries();
-        }
-        
-        public Searcher.Searcher LoadSearchWindow()
-        {
-            if (regenerateEntries)
-            {
-                GenerateFuncEntries();
-                regenerateEntries = false;
-            }
             var root = new List<SearcherItem>();
 
-            foreach (var pair in currentFuncEntries)
+            foreach (var pair in NPBehaveFunctionCache.KnownFunctionLookupTable)
             {
-                var classItem =  new SearcherItem(pair.Key);
-                root.Add(classItem);
-                foreach (var child in pair.Value)
+                if (pair.Value.Count == 0)
                 {
-                    classItem.AddChild(new SearcherItem(child.name));
+                    continue;
+                }
+                var classItem =  new SearcherItem(pair.Key.ToString());
+                foreach (var functionNameAttribute in pair.Value)
+                {
+                    if (purpose == FuncPurpose.Any || functionNameAttribute.Purpose == FuncPurpose.Any || purpose == functionNameAttribute.Purpose)
+                    {
+                        classItem.AddChild(new SearcherItem(functionNameAttribute.Name, functionNameAttribute.Help));
+                    }
+                }
+                if (classItem.HasChildren)
+                {
+                    root.Add(classItem);
                 }
             }
             var nodeDatabase = SearcherDatabase.Create(root, string.Empty, false);
             
             return new Searcher.Searcher(nodeDatabase, new SearcherAdapter("Find Function"));
         }
-        
-        void GenerateFuncEntries()
+
+        public bool OnSearcherSelectEntry(SearcherItem entry, Action<string> selectedAction)
         {
-            foreach (var pair in NPBehaveFunctionCache.KnownFunctionLookupTable)
+            if (entry == null || selectedAction == null)
             {
-                List<FuncEntry> funcEntries = new List<FuncEntry>();
-                currentFuncEntries.Add(pair.Key.ToString(), funcEntries);
-                foreach (var funcAttribute in pair.Value)
-                {
-                    funcEntries.Add(new FuncEntry()
-                    {
-                        name = funcAttribute.Name
-                    });
-                }
+                return false;
             }
-        }
-
-        public bool OnSearcherSelectEntry(SearcherItem entry)
-        {
-
+            selectedAction.Invoke(entry.Name);
             return true;
         }
     }

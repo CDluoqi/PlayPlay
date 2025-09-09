@@ -1,53 +1,38 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.BehaveGraph.GraphData",
-    "m_ObjectId": "eff4ccc09cbc44daa8bf2d834846dfa5",
+    "m_ObjectId": "ee9b4ffd907e4bb9b84f8dc57b4015fb",
     "m_Nodes": [
         {
-            "m_Id": "65bdee176a314ce49e969d96274cca6b"
+            "m_Id": "476edaa83ea64f19a2285a6c42780b9d"
         },
         {
-            "m_Id": "920ef20bcf344f959e8e6861a9ab6aeb"
+            "m_Id": "147f32bd2e81429095ab3175184f548f"
         },
         {
-            "m_Id": "89cd80ac24e946dca7a539c8b052eddc"
+            "m_Id": "abb96ae91b6c4e17980140c0baf220e8"
         },
         {
-            "m_Id": "b779f05ff7fc43c7b59c3b846dc0dc29"
+            "m_Id": "e072abe76b4f4fc9bf1a06894560a13b"
         },
         {
-            "m_Id": "470f5fd909214ba088bf05828c94cf22"
+            "m_Id": "67772fc0d7f74869a3d68f13fb807dba"
         },
         {
-            "m_Id": "177e95084e1740f78579f9df21dac435"
-        },
-        {
-            "m_Id": "9f967c74963a473389738958b877919b"
-        },
-        {
-            "m_Id": "73eaba1fa0c24f669bf6021296efbe60"
-        },
-        {
-            "m_Id": "69bf0b1165014f2f8eef0a5673525855"
-        },
-        {
-            "m_Id": "11f66c8f23d84fb7a136d30ee156fa9d"
-        },
-        {
-            "m_Id": "562ce88f08ee4acdbe603c34959aaed5"
+            "m_Id": "3a3c8f2509454569969f66835b1569f9"
         }
     ],
     "m_Edges": [
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "89cd80ac24e946dca7a539c8b052eddc"
+                    "m_Id": "abb96ae91b6c4e17980140c0baf220e8"
                 },
                 "m_SlotId": 0
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "b779f05ff7fc43c7b59c3b846dc0dc29"
+                    "m_Id": "e072abe76b4f4fc9bf1a06894560a13b"
                 },
                 "m_SlotId": 0
             }
@@ -55,13 +40,13 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "470f5fd909214ba088bf05828c94cf22"
+                    "m_Id": "476edaa83ea64f19a2285a6c42780b9d"
                 },
                 "m_SlotId": 0
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "177e95084e1740f78579f9df21dac435"
+                    "m_Id": "147f32bd2e81429095ab3175184f548f"
                 },
                 "m_SlotId": 0
             }
@@ -69,363 +54,38 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "9f967c74963a473389738958b877919b"
+                    "m_Id": "67772fc0d7f74869a3d68f13fb807dba"
                 },
                 "m_SlotId": 0
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "73eaba1fa0c24f669bf6021296efbe60"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "65bdee176a314ce49e969d96274cca6b"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "920ef20bcf344f959e8e6861a9ab6aeb"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "11f66c8f23d84fb7a136d30ee156fa9d"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "69bf0b1165014f2f8eef0a5673525855"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "69bf0b1165014f2f8eef0a5673525855"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "562ce88f08ee4acdbe603c34959aaed5"
+                    "m_Id": "3a3c8f2509454569969f66835b1569f9"
                 },
                 "m_SlotId": 0
             }
         }
     ]
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBehaveBlockNode",
-    "m_ObjectId": "11f66c8f23d84fb7a136d30ee156fa9d",
-    "m_Name": "",
-    "m_DrawState": {
-        "m_Expanded": false,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 0.0,
-            "y": 0.0,
-            "width": 0.0,
-            "height": 0.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "2e56340136934d548865b9f35c0ec758"
-        }
-    ],
-    "synonyms": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPAction",
-    "m_ObjectId": "177e95084e1740f78579f9df21dac435",
-    "m_Name": "Action",
-    "m_DrawState": {
-        "m_Expanded": false,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 219.99996948242188,
-            "y": 118.0000228881836,
-            "width": 140.00003051757813,
-            "height": 104.9999771118164
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "5efc891a8f26417281e35af63026eae4"
-        }
-    ],
-    "synonyms": [
-        "action"
-    ],
-    "m_ActionName": "LogTest3"
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBehaveInputSlot",
-    "m_ObjectId": "1a7771c9fff24410bf80e22c1ab8baaf",
-    "m_Id": 0,
-    "m_DisplayName": "Node",
-    "m_SlotType": 0,
-    "m_Hidden": false
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBehaveInputSlot",
-    "m_ObjectId": "1faeaee9d8574fbbb895aa3b8fa7c95c",
-    "m_Id": 0,
-    "m_DisplayName": "Node",
-    "m_SlotType": 0,
-    "m_Hidden": false
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBehaveOutputSlot",
-    "m_ObjectId": "2e56340136934d548865b9f35c0ec758",
-    "m_Id": 0,
-    "m_DisplayName": "Node",
-    "m_SlotType": 1,
-    "m_Hidden": false
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBehaveBlockNode",
-    "m_ObjectId": "470f5fd909214ba088bf05828c94cf22",
-    "m_Name": "",
-    "m_DrawState": {
-        "m_Expanded": false,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 0.0,
-            "y": 0.0,
-            "width": 0.0,
-            "height": 0.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "c475a947360e4bea9cd190f882dc03e9"
-        }
-    ],
-    "synonyms": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPAction",
-    "m_ObjectId": "562ce88f08ee4acdbe603c34959aaed5",
-    "m_Name": "Action",
-    "m_DrawState": {
-        "m_Expanded": false,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 415.0,
-            "y": 429.0,
-            "width": 180.00006103515626,
-            "height": 105.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "70c4507bed04413b8a176c6fffb5e1ea"
-        }
-    ],
-    "synonyms": [
-        "action"
-    ],
-    "m_ActionName": "LogTest2"
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBehaveOutputSlot",
-    "m_ObjectId": "57cd0001694a45a08f5845baafeda9a9",
-    "m_Id": 1,
-    "m_DisplayName": "Node",
-    "m_SlotType": 1,
-    "m_Hidden": false
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBehaveInputSlot",
-    "m_ObjectId": "5efc891a8f26417281e35af63026eae4",
-    "m_Id": 0,
-    "m_DisplayName": "Node",
-    "m_SlotType": 0,
-    "m_Hidden": false
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPRoot",
-    "m_ObjectId": "65bdee176a314ce49e969d96274cca6b",
-    "m_Name": "Root",
-    "m_DrawState": {
-        "m_Expanded": false,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": -116.99999237060547,
-            "y": 7.000010967254639,
-            "width": 73.00001525878906,
-            "height": 77.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "aa595f62739d4363bba6e8f9e341f082"
-        }
-    ],
-    "synonyms": [
-        "time max"
-    ]
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBlackboardCondition",
-    "m_ObjectId": "69bf0b1165014f2f8eef0a5673525855",
-    "m_Name": "BlackboardCondition",
-    "m_DrawState": {
-        "m_Expanded": false,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 220.0,
-            "y": 375.0,
-            "width": 165.0,
-            "height": 159.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "8a14c8e8c9984996be3a0935943c07fd"
-        },
-        {
-            "m_Id": "57cd0001694a45a08f5845baafeda9a9"
-        }
-    ],
-    "synonyms": [
-        "decorator",
-        "blackboardCondition"
-    ],
-    "m_Operator": 3,
-    "m_Value": "",
-    "m_StopsOnChange": 1
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBehaveInputSlot",
-    "m_ObjectId": "70c4507bed04413b8a176c6fffb5e1ea",
-    "m_Id": 0,
-    "m_DisplayName": "Node",
-    "m_SlotType": 0,
-    "m_Hidden": false
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBehaveOutputSlot",
-    "m_ObjectId": "712faae779dd460c87ee6a51f6ce4c7c",
-    "m_Id": 0,
-    "m_DisplayName": "Node",
-    "m_SlotType": 1,
-    "m_Hidden": false
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPWaitUntilStopped",
-    "m_ObjectId": "73eaba1fa0c24f669bf6021296efbe60",
-    "m_Name": "WaitUntilStopped",
-    "m_DrawState": {
-        "m_Expanded": false,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 214.0,
-            "y": 268.0,
-            "width": 146.0,
-            "height": 77.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "98df07194b0746448c26b04d5f5bdc16"
-        }
-    ],
-    "synonyms": [
-        "wait until stopped"
-    ]
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBehaveBlockNode",
-    "m_ObjectId": "89cd80ac24e946dca7a539c8b052eddc",
-    "m_Name": "",
-    "m_DrawState": {
-        "m_Expanded": false,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 0.0,
-            "y": 0.0,
-            "width": 0.0,
-            "height": 0.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "712faae779dd460c87ee6a51f6ce4c7c"
-        }
-    ],
-    "synonyms": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBehaveInputSlot",
-    "m_ObjectId": "8a14c8e8c9984996be3a0935943c07fd",
-    "m_Id": 0,
-    "m_DisplayName": "Node",
-    "m_SlotType": 0,
-    "m_Hidden": false
 }
 
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.BehaveGraph.NPSequence",
-    "m_ObjectId": "920ef20bcf344f959e8e6861a9ab6aeb",
+    "m_ObjectId": "147f32bd2e81429095ab3175184f548f",
     "m_Name": "Sequence",
     "m_DrawState": {
         "m_Expanded": false,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -17.0,
-            "y": 7.0,
-            "width": 150.0,
-            "height": 199.0
+            "x": -109.99999237060547,
+            "y": -1151.0,
+            "width": 207.0,
+            "height": 107.0
         }
     },
     "m_Slots": [
         {
-            "m_Id": "1a7771c9fff24410bf80e22c1ab8baaf"
+            "m_Id": "301ec96e48944bf1b1a2db7b85dc4b23"
         }
     ],
     "synonyms": [
@@ -435,16 +95,10 @@
     "m_StackData": {
         "m_Blocks": [
             {
-                "m_Id": "89cd80ac24e946dca7a539c8b052eddc"
+                "m_Id": "abb96ae91b6c4e17980140c0baf220e8"
             },
             {
-                "m_Id": "470f5fd909214ba088bf05828c94cf22"
-            },
-            {
-                "m_Id": "9f967c74963a473389738958b877919b"
-            },
-            {
-                "m_Id": "11f66c8f23d84fb7a136d30ee156fa9d"
+                "m_Id": "67772fc0d7f74869a3d68f13fb807dba"
             }
         ]
     }
@@ -453,7 +107,100 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.BehaveGraph.NPBehaveInputSlot",
-    "m_ObjectId": "98df07194b0746448c26b04d5f5bdc16",
+    "m_ObjectId": "301ec96e48944bf1b1a2db7b85dc4b23",
+    "m_Id": 0,
+    "m_DisplayName": "Node",
+    "m_SlotType": 0,
+    "m_Hidden": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPWaitUntilStopped",
+    "m_ObjectId": "3a3c8f2509454569969f66835b1569f9",
+    "m_Name": "WaitUntilStopped",
+    "m_DrawState": {
+        "m_Expanded": false,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 66.0000228881836,
+            "y": -1015.9999389648438,
+            "width": 145.99996948242188,
+            "height": 76.99993896484375
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "9b843c4f59494f69ad45e269e61071b3"
+        }
+    ],
+    "synonyms": [
+        "wait until stopped"
+    ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPRoot",
+    "m_ObjectId": "476edaa83ea64f19a2285a6c42780b9d",
+    "m_Name": "Root",
+    "m_DrawState": {
+        "m_Expanded": false,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -205.86756896972657,
+            "y": -1150.987548828125,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "af729eabccaa4b6db8d099a0a01a7e84"
+        }
+    ],
+    "synonyms": [
+        "time max"
+    ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPBehaveBlockNode",
+    "m_ObjectId": "67772fc0d7f74869a3d68f13fb807dba",
+    "m_Name": "",
+    "m_DrawState": {
+        "m_Expanded": false,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "ff5e2dccd5624ce7b12ea4ab42d059a2"
+        }
+    ],
+    "synonyms": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPBehaveOutputSlot",
+    "m_ObjectId": "6fffaa1294b54986a1fc87c11c41e0f7",
+    "m_Id": 0,
+    "m_DisplayName": "Node",
+    "m_SlotType": 1,
+    "m_Hidden": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPBehaveInputSlot",
+    "m_ObjectId": "9b843c4f59494f69ad45e269e61071b3",
     "m_Id": 0,
     "m_DisplayName": "Node",
     "m_SlotType": 0,
@@ -463,21 +210,21 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.BehaveGraph.NPBehaveBlockNode",
-    "m_ObjectId": "9f967c74963a473389738958b877919b",
+    "m_ObjectId": "abb96ae91b6c4e17980140c0baf220e8",
     "m_Name": "",
     "m_DrawState": {
         "m_Expanded": false,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 21.0,
-            "y": 193.0,
-            "width": 69.0,
-            "height": 41.0
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
         }
     },
     "m_Slots": [
         {
-            "m_Id": "f4271b62195545498f7fbe5f53238362"
+            "m_Id": "6fffaa1294b54986a1fc87c11c41e0f7"
         }
     ],
     "synonyms": []
@@ -486,53 +233,53 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.BehaveGraph.NPBehaveOutputSlot",
-    "m_ObjectId": "aa595f62739d4363bba6e8f9e341f082",
+    "m_ObjectId": "af729eabccaa4b6db8d099a0a01a7e84",
     "m_Id": 0,
     "m_DisplayName": "Node",
     "m_SlotType": 1,
+    "m_Hidden": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.BehaveGraph.NPBehaveInputSlot",
+    "m_ObjectId": "afd9a367074e4156bbc6bab829d17088",
+    "m_Id": 0,
+    "m_DisplayName": "Node",
+    "m_SlotType": 0,
     "m_Hidden": false
 }
 
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.BehaveGraph.NPAction",
-    "m_ObjectId": "b779f05ff7fc43c7b59c3b846dc0dc29",
+    "m_ObjectId": "e072abe76b4f4fc9bf1a06894560a13b",
     "m_Name": "Action",
     "m_DrawState": {
         "m_Expanded": false,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 219.99996948242188,
-            "y": -11.99999713897705,
-            "width": 140.00003051757813,
-            "height": 105.00001525878906
+            "x": 66.00003814697266,
+            "y": -1151.0,
+            "width": 180.0,
+            "height": 105.0
         }
     },
     "m_Slots": [
         {
-            "m_Id": "1faeaee9d8574fbbb895aa3b8fa7c95c"
+            "m_Id": "afd9a367074e4156bbc6bab829d17088"
         }
     ],
     "synonyms": [
         "action"
     ],
-    "m_ActionName": "LogTest"
+    "m_FunctionName": "LogTest2"
 }
 
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.BehaveGraph.NPBehaveOutputSlot",
-    "m_ObjectId": "c475a947360e4bea9cd190f882dc03e9",
-    "m_Id": 0,
-    "m_DisplayName": "Node",
-    "m_SlotType": 1,
-    "m_Hidden": false
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.BehaveGraph.NPBehaveOutputSlot",
-    "m_ObjectId": "f4271b62195545498f7fbe5f53238362",
+    "m_ObjectId": "ff5e2dccd5624ce7b12ea4ab42d059a2",
     "m_Id": 0,
     "m_DisplayName": "Node",
     "m_SlotType": 1,

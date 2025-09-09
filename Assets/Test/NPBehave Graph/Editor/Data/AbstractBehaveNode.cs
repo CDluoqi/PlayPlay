@@ -177,6 +177,11 @@ namespace UnityEditor.BehaveGraph
             }
             throw new ArgumentException("Slot could not be found", "slotId");
         }
+
+        public virtual string ParamToJson()
+        {
+            return null;
+        }
     }
 }
 

@@ -35,96 +35,17 @@ namespace NPBehave
                 FunctionNameAttribute attribute = method.GetCustomAttribute<FunctionNameAttribute>();
                 if (attribute != null)
                 {
-                    if (method.ReturnType != typeof(void) && method.GetParameters().All(p => true))
+                    Type funcType = method.ReturnType != typeof(void) ? NPBehaveFunctionType.GetFuncType(method) : NPBehaveFunctionType.GetActionType(method);
+                    Delegate functionDelegate = method.CreateDelegate(funcType, this);
+                    if (!actionMap.TryGetValue(attribute.Name, out var methodList))
                     {
-                        Delegate functionDelegate = method.CreateDelegate(GetFuncType(method), this);
-                        if (!actionMap.TryGetValue(attribute.Name, out var methodList))
-                        {
-                            methodList = new List<object>();
-                            actionMap.Add(attribute.Name, methodList);
-                        }
-                        methodList.Add(functionDelegate);
+                        methodList = new List<object>();
+                        actionMap.Add(attribute.Name, methodList);
                     }
-                    else
-                    {
-                        Console.WriteLine($"Warning: Method {method.Name} has FunctionNameAttribute but is not a valid Func<> type.");
-                    }
+                    methodList.Add(functionDelegate);
                 }
             }
 
-        }
-        
-        private Type GetFuncType(MethodInfo method)
-        {
-            Type[] parameterTypes = method.GetParameters().Select(p => p.ParameterType).ToArray();
-            Type returnType = method.ReturnType;
-
-            Type funcType; 
-            if (parameterTypes.Length == 0)
-            {
-                funcType = typeof(Func<>).MakeGenericType(returnType);
-            }
-            else
-            {
-                Type[] genericArguments = parameterTypes.Concat(new[] { returnType }).ToArray();
-                Type genericFuncType = null;
-
-                switch (parameterTypes.Length)
-                {
-                    case 1:
-                        genericFuncType = typeof(Func<,>);
-                        break;
-                    case 2:
-                        genericFuncType = typeof(Func<,,>);
-                        break;
-                    case 3:
-                        genericFuncType = typeof(Func<,,,>);
-                        break;
-                    case 4:
-                        genericFuncType = typeof(Func<,,,,>);
-                        break;
-                    case 5:
-                        genericFuncType = typeof(Func<,,,,,>);
-                        break;
-                    case 6:
-                        genericFuncType = typeof(Func<,,,,,,>);
-                        break;
-                    case 7:
-                        genericFuncType = typeof(Func<,,,,,,,>);
-                        break;
-                    case 8:
-                        genericFuncType = typeof(Func<,,,,,,,,>);
-                        break;
-                    case 9:
-                        genericFuncType = typeof(Func<,,,,,,,,,>);
-                        break;
-                    case 10:
-                        genericFuncType = typeof(Func<,,,,,,,,,,>);
-                        break;
-                    case 11:
-                        genericFuncType = typeof(Func<,,,,,,,,,,,>);
-                        break;
-                    case 12:
-                        genericFuncType = typeof(Func<,,,,,,,,,,,,>);
-                        break;
-                    case 13:
-                    genericFuncType = typeof(Func<,,,,,,,,,,,,,>);
-                    break;
-                    case 14:
-                        genericFuncType = typeof(Func<,,,,,,,,,,,,,,>);
-                        break;
-                    case 15:
-                        genericFuncType = typeof(Func<,,,,,,,,,,,,,,,>);
-                        break;
-                    case 16:
-                        genericFuncType = typeof(Func<,,,,,,,,,,,,,,,,>);
-                        break;
-                    default:
-                        throw new NotSupportedException($"Func with {parameterTypes.Length} parameters is not supported.");
-                }
-                funcType = genericFuncType.MakeGenericType(genericArguments);
-            }
-            return funcType;
         }
 
         Root CreateBehaveTree()
@@ -157,9 +78,7 @@ namespace NPBehave
                     return null;
             
                 case NPBehaveNodeType.Action:
-                    Func<bool, Action.Result> func = GetFunction<Func<bool, Action.Result>>("LogTest");
-                    Action action = new Action(func);
-                    return action;
+                    return CreateActionNode(nodeConfig);
                 case NPBehaveNodeType.NavWalkTo:return null;
                 case NPBehaveNodeType.Wait:return null;
                 case NPBehaveNodeType.WaitUntilStopped:
@@ -185,12 +104,16 @@ namespace NPBehave
             return null;
         }
 
-        public T GetFunction<T>(string functionName)
+        List<object> GetFunctionListByName(string functionName)
         {
-            Debug.LogError("GetFunction " + typeof(T) + "  " +  functionName + "  " + actionMap.Count);
-            if (actionMap.TryGetValue(functionName, out List<object> functionList))
+            return actionMap.GetValueOrDefault(functionName);
+        }
+
+        T GetFunction<T>(List<object> functionList)
+        {
+            if (functionList != null)
             {
-                foreach (object function in functionList)
+                foreach (var function in functionList)
                 {
                     if (function is T typeFunc)
                     {
@@ -200,6 +123,45 @@ namespace NPBehave
             }
             return default(T);
         }
+
+        Action CreateActionNode(NodeConfig nodeConfig)
+        {
+            if (string.IsNullOrEmpty(nodeConfig.param))
+            {
+                return null;
+            }
+            NPActionParam param = JsonUtility.FromJson<NPActionParam>(nodeConfig.param);
+            if (param != null)
+            {
+                List<object> functionList = GetFunctionListByName(param.functionName);
+                System.Action actionFunc = GetFunction<System.Action>(functionList);
+                if (actionFunc != null)
+                {
+                    Action action = new Action(actionFunc);
+                    return action;
+                }
+                Func<bool> singleFrameFunc = GetFunction<Func<bool>>(functionList);
+                if (singleFrameFunc != null)
+                {
+                    Action action = new Action(singleFrameFunc);
+                    return action;
+                }
+                Func<bool, Action.Result> multiframeFunc = GetFunction<Func<bool, Action.Result>>(functionList);
+                if (multiframeFunc != null)
+                {
+                    Action action = new Action(multiframeFunc);
+                    return action;
+                }
+                Func<Action.Request, Action.Result> multiframeFunc2 = GetFunction<Func<Action.Request, Action.Result>>(functionList);
+                if (multiframeFunc2 != null)
+                {
+                    Action action = new Action(multiframeFunc2);
+                    return action;
+                }
+            }
+            return new Action(()=>{Debug.LogError("Action func not found! param:" + nodeConfig.param);});
+        }
         
+
     }
 }

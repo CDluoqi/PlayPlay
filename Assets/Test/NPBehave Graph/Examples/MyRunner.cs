@@ -5,8 +5,14 @@ using UnityEngine;
 
 public class MyRunner : NPBehaveGraphRunner
 {
-    [FunctionName("LogTest")]
-    private Action.Result LogTest(bool aborted)
+    [FunctionName("LogTest0", FuncPurpose.Condition)]
+    private bool LogTest0()
+    {
+        return true;
+    }
+    
+    [FunctionName("LogTest1", FuncPurpose.Any, "This text is used to explain how to use this function")]
+    private Action.Result LogTest1(bool aborted)
     {
         if (aborted)
         {
@@ -16,13 +22,14 @@ public class MyRunner : NPBehaveGraphRunner
         Debug.LogError("PROGRESS");
         return Action.Result.PROGRESS;
     }
-    
+
+    private int runCount = 0;
     [FunctionName("LogTest2")]
     private void LogTest2()
     {
-        return;
+        Debug.LogError("Using Action");
     }
-    
+
     [FunctionName("LogTest3")]
     private void LogTest3()
     {

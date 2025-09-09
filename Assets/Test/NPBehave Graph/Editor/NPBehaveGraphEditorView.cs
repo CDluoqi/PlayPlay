@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NPBehave;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.Searcher;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Action = System.Action;
+using Node = UnityEditor.Experimental.GraphView.Node;
 using Object = UnityEngine.Object;
 namespace UnityEditor.BehaveGraph
 {
@@ -70,7 +73,6 @@ namespace UnityEditor.BehaveGraph
             m_EdgeConnectorListener = new EdgeConnectorListener(m_Graph, m_SearchWindowProvider, editorWindow);
 
             m_FunctionSearchWindowProvider = new FunctionSearchWindowProvider();
-            m_FunctionSearchWindowProvider.Initialize();
             
             
             AddNodes(graph.GetNodes<AbstractBehaveNode>());
@@ -100,7 +102,7 @@ namespace UnityEditor.BehaveGraph
             } 
         }
 
-        public void FindFunction(Vector2 screenMousePosition)
+        public void FindFunction(Action<string> selectedAction, FuncPurpose purpose = FuncPurpose.Any)
         {
             if (EditorWindow.focusedWindow == m_EditorWindow)
             {
@@ -108,8 +110,8 @@ namespace UnityEditor.BehaveGraph
                 Vector2 screenPos = GUIUtility.GUIToScreenPoint(localPos);
                 
                 var displayPosition = (screenPos - m_EditorWindow.position.position);
-                SearcherWindow.Show(m_EditorWindow, m_FunctionSearchWindowProvider.LoadSearchWindow(), 
-                    item => m_FunctionSearchWindowProvider.OnSearcherSelectEntry(item), displayPosition,null,
+                SearcherWindow.Show(m_EditorWindow, m_FunctionSearchWindowProvider.LoadSearchWindow(purpose), 
+                    item => m_FunctionSearchWindowProvider.OnSearcherSelectEntry(item, selectedAction), displayPosition,null,
                     new SearcherWindow.Alignment(SearcherWindow.Alignment.Vertical.Center, SearcherWindow.Alignment.Horizontal.Left));
             }
         }

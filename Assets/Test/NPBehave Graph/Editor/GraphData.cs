@@ -340,6 +340,7 @@ namespace UnityEditor.BehaveGraph
                 }
             }
 
+            nodeConfig.param = node.ParamToJson();
             nodeConfig.nodes = childNodeConfigs;
             return nodeConfig;
         }

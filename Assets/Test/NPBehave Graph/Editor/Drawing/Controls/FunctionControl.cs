@@ -1,38 +1,42 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using NPBehave;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Assertions;
-using UnityEditor.Graphing;
 
 namespace UnityEditor.BehaveGraph.Drawing.Controls 
 {
+    
     [AttributeUsage(AttributeTargets.Property)]
-    class ActionNameControlAttribute : Attribute, IControlAttribute
+    class FunctionControlAttribute : Attribute, IControlAttribute
     {
         string m_Label;
-        public ActionNameControlAttribute(string label = null)
+        FuncPurpose m_funcPurpose;
+        public FunctionControlAttribute(string label = null, FuncPurpose funcPurpose = FuncPurpose.Any)
         {
             m_Label = label;
+            m_funcPurpose  = funcPurpose;
         }
 
         public VisualElement InstantiateControl(AbstractBehaveNode node, PropertyInfo propertyInfo, ISearchView searchView)
         {
-            if (!ActionNameControlView.validTypes.Contains(propertyInfo.PropertyType))
+            if (!FunctionControlView.validTypes.Contains(propertyInfo.PropertyType))
                 return null;
-            return new ActionNameControlView(m_Label, node, propertyInfo, searchView);
+            return new FunctionControlView(m_Label, node, propertyInfo, searchView, m_funcPurpose);
         }
     }
 
-    class ActionNameControlView : VisualElement
+    class FunctionControlView : VisualElement
     {
         public static Type[] validTypes = { typeof(string) };
         AbstractBehaveNode m_Node;
         PropertyInfo m_PropertyInfo;
         string m_Value;
         int m_UndoGroup = -1;
-        public ActionNameControlView(string label, AbstractBehaveNode node, PropertyInfo propertyInfo, ISearchView searchView)
+        TextField field;
+        public FunctionControlView(string label, AbstractBehaveNode node, PropertyInfo propertyInfo, ISearchView searchView, FuncPurpose funcPurpose)
         {
             name = "controlAttribute";
             m_Node = node;
@@ -42,7 +46,7 @@ namespace UnityEditor.BehaveGraph.Drawing.Controls
             Add(thisLabel);
             m_Value = GetValue();
             string value = null;
-            var field = new TextField { value = m_Value };
+            field = new TextField { value = m_Value };
             field.RegisterCallback<MouseDownEvent>(Repaint);
             field.RegisterCallback<MouseMoveEvent>(Repaint);
             field.RegisterValueChangedCallback(evt =>
@@ -52,8 +56,7 @@ namespace UnityEditor.BehaveGraph.Drawing.Controls
                 m_PropertyInfo.SetValue(m_Node, value, null);
                 m_UndoGroup = -1;
             });
-
-            // Pressing escape while we are editing causes it to revert to the original value when we gained focus
+            
             field.Q("unity-text-input").RegisterCallback<KeyDownEvent>(evt =>
             {
                 if (evt.keyCode == KeyCode.Escape && m_UndoGroup > -1)
@@ -70,14 +73,19 @@ namespace UnityEditor.BehaveGraph.Drawing.Controls
             });
             Add(field);
             
-            Action action = () =>
+            var csharpButton = new Button(() =>
             {
-                searchView.FindFunction(Vector2.zero);
-            };
+                searchView.FindFunction(SetValue, funcPurpose);
+            }) { text = "Find" };
             
-            var csharpButton = new Button(() => { searchView.FindFunction(Vector2.zero);}) { text = "Set" };
             csharpButton.AddToClassList("some-styled-button");
             Add(csharpButton);
+        }
+
+        void SetValue(string value)
+        {
+            field.SetValueWithoutNotify(value);
+            m_PropertyInfo.SetValue(m_Node, value, null);
         }
 
         string GetValue()
